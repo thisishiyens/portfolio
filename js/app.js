@@ -55,18 +55,14 @@ function home() {
   SECTIONS.forEach(s => {
     const list = PROJECTS.filter(p => p.cat === s.id);
     h += '<section id="' + s.id + '"><h2>' + esc(s.name) + '</h2><div class="grid">';
-    list.forEach((p, i) => {
-      h += '<a class="card' + (i >= 4 ? " x" : "") + '" href="#' + esc(p.id) + '"><div class="t">' +
+    list.forEach(p => {
+      h += '<a class="card" href="#' + esc(p.id) + '"><div class="t">' +
         (p.thumb ? '<img src="' + esc(src(p.thumb)) + '" alt="' + esc(p.title) + '" onerror="this.remove()">' : "<span>IMAGE</span>") +
         "</div><b>" + esc(p.title) + "</b><em>" + esc(p.year) + "</em></a>";
     });
-    h += "</div>" + (list.length > 4 ? '<div class="more"><button type="button">MORE VIEW</button></div>' : "") + "</section>";
+    h += "</div></section>";
   });
   app.innerHTML = h;
-  app.querySelectorAll(".more button").forEach(b => b.onclick = () => {
-    const sec = b.closest("section"), on = sec.classList.toggle("open");
-    b.textContent = on ? "CLOSE" : "MORE VIEW";
-  });
 }
 
 /* ---------- 작업물 상세 페이지 ---------- */
