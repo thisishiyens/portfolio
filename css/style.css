@@ -68,11 +68,13 @@ header {
 }
 .hero img, .hero video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ---------- 섹션 제목 + 그리드(웹 2열) ---------- */
+/* ---------- 섹션 제목 + 그리드(웹 3열) ---------- */
 section { padding: 88px 32px 0; }
 h2 { max-width: 1400px; margin: 0 auto 32px; font-size: 20px; font-weight: 600; letter-spacing: .02em; }
+/* 섹션 제목(Branding / Product / Campaign)은 우선 화면에서 숨김. 다시 보이게 하려면 아래 한 줄을 지우세요. */
+section h2 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 18px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 18px;
   max-width: 1400px; margin: 0 auto;
 }
 
@@ -84,7 +86,7 @@ h2 { max-width: 1400px; margin: 0 auto 32px; font-size: 20px; font-weight: 600; 
   color: #bbb; font-size: 12px; letter-spacing: .1em;
 }
 .t img { width: 100%; height: 100%; object-fit: cover; }
-.card b  { display: block; margin-top: 14px; font-weight: 600; font-size: 18px; text-align: left; }   /* 프로젝트명 18px */
+.card b  { display: block; margin-top: 14px; font-weight: 600; font-size: 16px; text-align: left; }   /* 프로젝트명 16px */
 .card em { display: block; font-style: normal; font-weight: 300; color: var(--muted); font-size: 12px; text-align: left; } /* 연도(부제목) 12px */
 
 /* ---------- 작업물 상세 페이지 (왼쪽 이미지 / 오른쪽 내용) ---------- */
