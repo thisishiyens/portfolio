@@ -104,7 +104,7 @@ h2 { max-width: 1400px; margin: 0 auto 32px; font-size: 20px; font-weight: 600; 
 }
 .info { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 88px); }
 .back { font-size: 12px; color: var(--muted); }
-.detail h1 { font-size: 16px; font-weight: 600; line-height: 1.4; margin: 20px 0 4px; }   /* 제목 16px */
+.detail h1 { font-size: 18px; font-weight: 600; line-height: 1.4; margin: 20px 0 4px; }   /* 제목 18px */
 .sub { font-size: 12px; color: var(--muted); margin: 0 0 24px; }                          /* 부제목 12px */
 .sub a { color: var(--text); border-bottom: 1px solid var(--text); }
 .desc { font-size: 13px; line-height: 1.8; margin: 0; white-space: pre-line; }            /* 설명 13px, 행간 1.8 */

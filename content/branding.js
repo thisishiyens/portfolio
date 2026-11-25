@@ -26,7 +26,7 @@ const BRANDING = [
     id:     "branding-01",
     title:  "Bleron Logo",
     year:   "2025",
-    sub:    "",
+    sub:    "기여도 100%",
     link:   "",
     desc:   "로고 브랜드의 가치와 성격을 압축하는 스토리라인 정립 및\n에듀테크 서비스의 핵심인 '성장'과 '연결'을 나타내는\n대문자 'B'를 모티프 설정하였습니다.\n다양한 조형적 시안 검증을 거쳐\n온·오프라인 매체에 최적화된 심볼형 로고 형태를 다듬었습니다.\n\n매체별 시인성 확보를 위해 심볼(Symbol),\n워드마크(Wordmark), 그리고 조합형(Combination)의\n다양한 조형적 밸런스를 검증하였습니다.",
     thumb:  "branding-01/thumb.jpg",
