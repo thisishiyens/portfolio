@@ -1,0 +1,6 @@
+# 맥이 자동으로 만드는 파일
+.DS_Store
+
+# 공개하지 않는 폴더/파일
+_backup/
+.deploy.bundle
