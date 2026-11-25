@@ -17,7 +17,7 @@
   ├─ content/            ★ 글을 고치는 곳 ★
   │   ├─ site.js           이름, 이메일, SNS, 맨 위 큰 이미지
   │   ├─ branding.js       Branding 작업물 목록
-  │   ├─ uiux.js           UI/UX 작업물 목록
+  │   ├─ uiux.js           Product 작업물 목록 (화면에는 Product 로 보입니다)
   │   └─ campaign.js       Campaign 작업물 목록
   │
   └─ images/             ★ 사진·영상을 넣는 곳 ★

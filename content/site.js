@@ -10,7 +10,7 @@ const SITE = {
 
   /* 하단에 나오는 직함과 소개 한 줄 */
   role: "Visual Designer",
-  tagline: "Branding · UI/UX · Campaign",
+  tagline: "Branding · Product · Campaign",
 
   /* 연락처 */
   email: "dltkdl5656@naver.com",

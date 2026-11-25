@@ -6,11 +6,11 @@
 /* 이미지가 들어 있는 폴더 */
 const IMG_DIR = "images/";
 
-/* 섹션(Branding / UI/UX / Campaign)과 내용 파일을 연결합니다.
+/* 섹션(Branding / Product / Campaign)과 내용 파일을 연결합니다.
    content 파일 하나에 오타가 있어도 다른 섹션은 정상적으로 보이도록 안전장치를 걸어 두었습니다. */
 const SECTIONS = [
   { id: "branding", name: "Branding", items: typeof BRANDING !== "undefined" ? BRANDING : [] },
-  { id: "uiux",     name: "UI/UX",    items: typeof UIUX     !== "undefined" ? UIUX     : [] },
+  { id: "uiux",     name: "Product",  items: typeof UIUX     !== "undefined" ? UIUX     : [] },
   { id: "campaign", name: "Campaign", items: typeof CAMPAIGN !== "undefined" ? CAMPAIGN : [] }
 ];
 const PROJECTS = SECTIONS.flatMap(s => s.items.map(p => ({ ...p, cat: s.id })));
