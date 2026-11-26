@@ -127,7 +127,18 @@ h2 { display: none; max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px
   max-width: 1400px; margin: 0 auto; padding: var(--s3) var(--pad) 0;
   display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--s3); align-items: start;
 }
-.detail.about { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }   /* About: 사진 폭을 줄여 글 높이와 비슷하게 (사진 40% : 글 60%) */
+.detail.about { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }   /* About(PC): 글 60% 왼쪽 / 사진 40% 오른쪽 */
+.detail.about .imgs { order: 2; }
+.detail.about { align-items: stretch; }
+.detail.about .info { position: static; }
+.detail.about .info h1 { margin-top: 0; }   /* 글 맨 위를 사진 맨 위와 같은 선에 */
+.detail.about .imgs { position: relative; }
+.detail.about .ph { position: absolute; inset: 0; }   /* 사진 높이를 글 높이에 딱 맞춤 (위·아래 선이 같아짐) */
+.detail.about .ph img { height: 100%; object-fit: cover; object-position: 60% 70%; }
+@media (max-width: 1100px) {   /* 화면이 좁으면 정사각형 그대로 */
+  .detail.about .ph { position: static; }
+  .detail.about .ph img { height: auto; aspect-ratio: 1 / 1; }
+}
 .detail.solo { grid-template-columns: minmax(0, 1fr); }   /* About: 사진 없이 글만 */
 .detail.solo .info { position: static; max-width: 640px; }
 .info { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 88px); }
@@ -179,6 +190,10 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
   .intro .steps span { padding: 8px 10px; }
   .intro .steps i { padding: 0; }
   .detail, .detail.about { padding: var(--s2) var(--pad) 0; grid-template-columns: 1fr; gap: var(--s2); }
+  footer { flex-direction: column; gap: var(--s1); }   /* 하단: 이름 → Contact 순서로 아래로 */
+  .detail.about .info { order: 1; }   /* 모바일 About: 사진이 위, 글이 아래 */
+  .detail.about .imgs { order: 0; }
+  .detail.about .info h1 { margin-top: 0; }
   .career { padding: var(--s2) var(--pad) 0; }
   .row { grid-template-columns: 1fr; gap: 8px; }
   .info { position: static; order: -1; }
