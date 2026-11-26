@@ -111,9 +111,11 @@ function careerPage() {
 function detail(p) {
   const same = PROJECTS.filter(x => x.cat === p.cat), i = same.indexOf(p);
   const prev = same[i - 1], next = same[i + 1];
-  const sub = p.link
-    ? '<a href="' + esc(p.link) + '" target="_blank" rel="noopener">' + esc(p.sub || p.link) + " ↗</a>"
-    : esc(p.sub);
+  /* 링크 아이콘: Heroicons(MIT) link 16 solid. 링크가 있으면 부제목 오른쪽 옆에 붙는다 */
+  const LINK_ICON = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.914 6.025a.75.75 0 0 1 1.06 0 3.5 3.5 0 0 1 0 4.95l-2 2a3.5 3.5 0 0 1-5.396-4.402.75.75 0 0 1 1.251.827 2 2 0 0 0 3.085 2.514l2-2a2 2 0 0 0 0-2.828.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.086 9.975a.75.75 0 0 1-1.06 0 3.5 3.5 0 0 1 0-4.95l2-2a3.5 3.5 0 0 1 5.396 4.402.75.75 0 0 1-1.251-.827 2 2 0 0 0-3.085-2.514l-2 2a2 2 0 0 0 0 2.828.75.75 0 0 1 0 1.06Z" clip-rule="evenodd"/></svg>';
+  const sub = esc(p.sub) + (p.link
+    ? '<a class="ext" href="' + esc(p.link) + '" target="_blank" rel="noopener" aria-label="사이트 바로가기">' + LINK_ICON + "</a>"
+    : "");
   const imgs = imgsHtml(p.images, p.title);
   app.innerHTML = '<article class="detail"><div class="imgs">' + imgs + '</div><div class="info">' +
     '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
