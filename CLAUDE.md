@@ -38,7 +38,7 @@ _backup/          예전 버전 (공개하지 않음)
 - 섹션 3개: Branding / Product / Campaign. (Product 는 예전 UI/UX 의 화면 이름. 파일·주소 이름 uiux 는 그대로 둔다.) 메인 페이지 작업 목록은 웹 그리드 3열, 모바일(760px 이하) 1열이고 개수 제한 없이 전부 보인다(MORE VIEW 없음).
   상세 페이지는 왼쪽 이미지 / 오른쪽 내용 구조 그대로. 패딩 값은 모두 짝수로 쓴다.
 - 상단 헤더: 왼쪽 이름 로고, 오른쪽에 **Work / About / Career** 메뉴 + 검정 **Contact** 버튼(누르면 맨 아래 이메일이 보이는 곳으로 내려감, 사용자 요청). 모바일은 위 줄에 로고+Contact, 아래 줄에 메뉴. Work = 메인의 작업 목록으로 내려감,
-  About = 상세 페이지와 같은 구조(왼쪽 사진 / 오른쪽 글, content/about.js), Career = 선으로 나눈 시간순 줄글(content/career.js). 주소는 #work / #about / #career.
+  About = 사진 없이 글만(content/about.js, 사진 칸은 비워 둠. 넣으면 왼쪽에 나옴), Career = 선으로 나눈 시간순 줄글(content/career.js). 주소는 #work / #about / #career.
 - 고정되는 상단 메뉴와 섹션 바로가기 줄의 배경은 흰색 불투명도 90% + 뒤쪽 흐림 효과 blur 8px(사용자 요청).
 - 섹션 제목(Branding / Product / Campaign)은 각 섹션 위에 **20px 볼드(700)**, 왼쪽 정렬(모바일 동일).
 - 썸네일 **16:9**. 글씨는 왼쪽 정렬. 메인 목록의 썸네일 아래 **3줄**: 프로젝트명 **16px** semibold / 서브 설명(sub) **13px** 회색 / 연도 **12px** light 회색. 줄 사이 간격은 제목↔서브 `--t1`, 서브↔연도 `--t2` 둘 다 10px로 동일.
