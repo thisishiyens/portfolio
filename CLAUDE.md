@@ -17,8 +17,8 @@
 ## 2. 폴더 구조 (사용자가 코드 편집기에서 급히 고칠 수 있게 나뉘어 있다)
 ```
 index.html        뼈대
-content/          ★ 글 수정 전용: site.js(이름·연락처·메인 영상) / branding.js / uiux.js / campaign.js
-images/<작업id>/   ★ 이미지 전용: thumb.jpg, 1.jpg, 2.jpg ...   (hero 파일은 images/ 바로 아래)
+content/          ★ 글 수정 전용: site.js(이름·연락처·메인 영상) / about.js / career.js / branding.js / uiux.js / campaign.js
+images/<작업id>/   ★ 이미지 전용: thumb.jpg, 1.jpg, 2.jpg ...   (hero 파일은 images/ 바로 아래, About 사진은 images/about/)
 css/style.css     디자인
 js/app.js         동작
 fonts/            글꼴
@@ -36,8 +36,13 @@ _backup/          예전 버전 (공개하지 않음)
 - 글꼴: 영문 Poppins, 한글 Pretendard (둘 다 OFL). 본문 글자 크기는 **12~24px** 안에서만.
 - 섹션 3개: Branding / Product / Campaign. (Product 는 예전 UI/UX 의 화면 이름. 파일·주소 이름 uiux 는 그대로 둔다.) 메인 페이지 작업 목록은 웹 그리드 3열, 모바일(760px 이하) 1열이고 개수 제한 없이 전부 보인다(MORE VIEW 없음).
   상세 페이지는 왼쪽 이미지 / 오른쪽 내용 구조 그대로. 패딩 값은 모두 짝수로 쓴다.
+- 상단 헤더: 왼쪽 이름 로고, 오른쪽에 **Work / About / Career** 메뉴 + 검정 **Contact** 버튼(메일 연결, 사용자 요청). 모바일은 위 줄에 로고+Contact, 아래 줄에 메뉴. Work = 메인의 작업 목록으로 내려감,
+  About = 상세 페이지와 같은 구조(왼쪽 사진 / 오른쪽 글, content/about.js), Career = 선으로 나눈 시간순 줄글(content/career.js). 주소는 #work / #about / #career.
 - 섹션 제목(Branding / Product / Campaign)은 **우선 화면에서 숨김**(사용자 요청). 다시 보이게 할 때는 css 의 `section h2` 숨김 줄만 지우면 되고, 크기는 20px(모바일 동일).
-- 썸네일 **16:9**. 글씨는 왼쪽 정렬. 메인 목록의 썸네일 아래: 프로젝트명 **16px** semibold, 연도(부제목) **12px** light 회색.
+- 썸네일 **16:9**. 글씨는 왼쪽 정렬. 메인 목록의 썸네일 아래 **3줄**: 프로젝트명 **16px** semibold / 서브 설명(sub) **14px** 회색 / 연도 **12px** light 회색. (sub 가 비어 있으면 그 줄은 생략)
+- 작업 총 12개 = Branding 3 + Product 3 + Campaign 6 (3열 × 4줄, 모든 줄이 꽉 참).
+- 모서리 둥글기는 `--r1` 4px(버튼) / `--r2` 8px(썸네일) / `--r3` 12px(상세·About 큰 이미지) 세 가지만 쓴다. 메인 큰 영상(hero)은 화면 끝까지 꽉 차므로 둥글게 하지 않는다.
+- 여백은 css 맨 위 `:root` 의 값만 쓴다: 좌우 `--pad`(웹 32px/모바일 16px), 간격 `--s1` 16 / `--s2` 32 / `--s3` 64. 임의의 px 를 새로 쓰지 않는다(모두 짝수).
 - 상세 페이지: 왼쪽 이미지 / 오른쪽 내용. 제목 18px, 부제목 12px(회색), 설명 13px(행간 1.8).
 - 맨 위 메인은 영상(mp4/webm)·GIF·이미지 모두 가능.
 - 이미지 규격: 메인 PC 영상 1920×840 · 이미지 2400×1050 / 모바일 영상 1080×1350 · 이미지 1200×1500 /

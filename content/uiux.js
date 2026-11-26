@@ -49,5 +49,19 @@ const UIUX = [
       "uiux-02/2.jpg",
       "uiux-02/3.jpg"
     ]
+  },
+  {
+    id:     "uiux-03",
+    title:  "프로젝트 이름 03",
+    year:   "2025",
+    sub:    "2025.06 – 2025.08",
+    link:   "",
+    desc:   "프로젝트 설명이 들어갑니다.",
+    thumb:  "uiux-03/thumb.jpg",
+    images: [
+      "uiux-03/1.jpg",
+      "uiux-03/2.jpg",
+      "uiux-03/3.jpg"
+    ]
   }
 ];

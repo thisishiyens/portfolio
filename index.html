@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   뼈대 파일입니다. 글을 고치실 때는 이 파일이 아니라 content 폴더의 파일을 열어 주세요.
-  (상단 메뉴 이름 Branding / Product / Campaign 을 바꾸려면 아래 <nav> 안의 글자를 고치시면 됩니다.)
+  (상단 메뉴 이름 Work / About / Career 를 바꾸려면 아래 <nav> 안의 글자를 고치시면 됩니다.)
 -->
 <html lang="ko">
 <head>
@@ -21,13 +21,15 @@
 
 <header>
   <div class="bar">
-    <nav>
-      <a href="#branding">Branding</a>
-      <a href="#uiux">Product</a>
-      <a href="#campaign">Campaign</a>
-    </nav>
     <a class="logo" href="#" id="logo"></a>
-    <div class="r" id="social"></div>
+    <div class="r">
+      <nav>
+        <a href="#work" data-n="work">Work</a>
+        <a href="#about" data-n="about">About</a>
+        <a href="#career" data-n="career">Career</a>
+      </nav>
+      <a class="btn" id="contact">Contact</a>
+    </div>
   </div>
 </header>
 
@@ -43,6 +45,8 @@
 <script src="content/branding.js"></script>
 <script src="content/uiux.js"></script>
 <script src="content/campaign.js"></script>
+<script src="content/about.js"></script>
+<script src="content/career.js"></script>
 <script src="content/site.js"></script>
 
 <!-- 동작 (건드리지 마세요) -->

@@ -15,11 +15,6 @@ const SITE = {
   /* 연락처 */
   email: "dltkdl5656@naver.com",
 
-  /* SNS 주소 (https:// 로 시작하는 전체 주소)
-     비워두면("") 상단 메뉴에서 그 항목이 사라집니다. */
-  instagram: "",
-  behance: "",
-
   /* ---------- 맨 위 큰 이미지 (영상 / GIF / 이미지 모두 가능) ----------
      images 폴더에 파일을 넣고, 파일 이름만 적으세요. 예) "hero.mp4"
      .mp4 .webm 은 영상(소리 없이 자동 반복), .gif .jpg .png .webp 는 이미지로 보입니다.

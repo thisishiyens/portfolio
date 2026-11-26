@@ -15,7 +15,9 @@
   ├─ fonts/              글꼴 파일 ................... 건드리지 마세요
   │
   ├─ content/            ★ 글을 고치는 곳 ★
-  │   ├─ site.js           이름, 이메일, SNS, 맨 위 큰 이미지
+  │   ├─ site.js           이름, 이메일, 맨 위 큰 이미지
+  │   ├─ about.js          About 페이지 (소개 글, 사진 목록)
+  │   ├─ career.js         Career 페이지 (기간·제목·설명 줄)
   │   ├─ branding.js       Branding 작업물 목록
   │   ├─ uiux.js           Product 작업물 목록 (화면에는 Product 로 보입니다)
   │   └─ campaign.js       Campaign 작업물 목록
@@ -27,13 +29,16 @@
       │   ├─ 2.jpg
       │   └─ 3.jpg
       ├─ branding-02/ ...
+      ├─ about/             About 페이지 사진 (1.jpg, 2.jpg ...)
       ├─ hero.mp4          맨 위 큰 영상 (PC)
       └─ hero-mobile.mp4   맨 위 큰 영상 (모바일)
 
 
 ■ 이런 걸 바꾸고 싶을 때
 
-  이름 / 이메일 / 인스타그램 주소 ........ content/site.js
+  이름 / 이메일 ........................ content/site.js
+  About 소개 글·사진 ..................... content/about.js + images/about/
+  Career 경력 줄 ......................... content/career.js ({ } 한 덩어리 = 한 줄)
   맨 위 큰 영상·이미지 바꾸기 ............ content/site.js 의 hero 부분 + images 폴더에 파일 넣기
   작업 제목, 연도, 설명, 기간 ............ content/ 안의 해당 섹션 파일 (branding.js 등)
   작업 이미지 바꾸기 ..................... images/작업폴더/ 안의 파일을 같은 이름으로 덮어쓰기

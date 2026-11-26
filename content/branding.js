@@ -49,5 +49,19 @@ const BRANDING = [
       "branding-02/2.jpg",
       "branding-02/3.jpg"
     ]
+  },
+  {
+    id:     "branding-03",
+    title:  "프로젝트 이름 03",
+    year:   "2022",
+    sub:    "기여도 100%",
+    link:   "",
+    desc:   "프로젝트 설명이 들어갑니다.",
+    thumb:  "branding-03/thumb.jpg",
+    images: [
+      "branding-03/1.jpg",
+      "branding-03/2.jpg",
+      "branding-03/3.jpg"
+    ]
   }
 ];
