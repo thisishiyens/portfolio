@@ -60,7 +60,8 @@ mq.addEventListener("change", () => { const h = document.querySelector(".hero");
 
 /* ---------- 메인 페이지 ---------- */
 function home() {
-  let h = '<div class="hero">' + heroInner() + "</div>" +
+  /* 메인 이미지·영상 파일을 content/site.js 에 적어야 나옵니다. 비어 있으면 아예 나오지 않습니다. */
+  let h = (S.hero || S.heroMobile ? '<div class="hero">' + heroInner() + "</div>" : "") +
     '<nav class="jump">' + SECTIONS.map(s => '<a href="#' + s.id + '">' + esc(s.name) + "</a>").join("") + "</nav>";   /* 메인 이미지 아래 섹션 바로가기 */
   h += '<div id="work">';
   SECTIONS.forEach(s => {

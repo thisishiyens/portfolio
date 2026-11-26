@@ -4,3 +4,6 @@
 # 공개하지 않는 폴더/파일
 _backup/
 .deploy.bundle
+
+# Claude 가 만든 미리보기 파일 (공개하지 않음)
+Claude outputs/
