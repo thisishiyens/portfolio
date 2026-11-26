@@ -126,14 +126,11 @@ h2 { display: none; max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px
 .card .s { display: block; margin-top: var(--t1); font-weight: 300; font-size: 14px; line-height: 1.2; color: var(--text); text-align: left; }      /* 2줄: 서브 설명 14px #111 */
 .card em { display: block; margin-top: var(--t2); font-style: normal; font-weight: 300; color: var(--muted); font-size: 12px; line-height: 1.2; text-align: left; } /* 3줄: 연도 12px */
 
-/* ---------- 작업물 상세 페이지 (PC: 왼쪽 내용 / 오른쪽 이미지, 모바일: 위 내용 / 아래 이미지) ---------- */
+/* ---------- 작업물 상세 페이지 (PC: 왼쪽 이미지 / 오른쪽 내용) ---------- */
 .detail {
   max-width: 1400px; margin: 0 auto; padding: var(--s3) var(--pad) 0;
   display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--s3); align-items: start;
 }
-@media (min-width: 761px) {   /* 작업 상세(PC): 왼쪽 내용 40% / 오른쪽 이미지 60% (사용자 요청). 모바일은 그대로 */
-  .detail:not(.about):not(.solo) { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
-  .detail:not(.about):not(.solo) .imgs { order: 2; }
 }
 .detail.about { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }   /* About(PC): 글 60% 왼쪽 / 사진 40% 오른쪽 */
 .detail.about .imgs { order: 2; }

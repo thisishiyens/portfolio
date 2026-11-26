@@ -35,13 +35,15 @@ const BRANDING = [
     contrib:"90%",
     thumb:  "branding-01/thumb.jpg",
     images: [
+      "branding-01/1.jpg",
       "branding-01/2.jpg",
-      "branding-01/4.jpg",
       "branding-01/3.jpg",
+      "branding-01/4.jpg",
       "branding-01/5.jpg",
       "branding-01/6.jpg",
       "branding-01/7.jpg",
-      "branding-01/8.jpg"
+      "branding-01/8.jpg",
+      "branding-01/9.jpg"
     ]
   },
   {
