@@ -81,8 +81,13 @@ header {
 }
 .hero img, .hero video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+/* ---------- 메인 이미지 아래 섹션 바로가기 (12px 회색, 마우스를 올리면 검정) ---------- */
+.jump { max-width: 1400px; margin: 0 auto; padding: var(--s1) var(--pad) 0; display: flex; gap: var(--s2); }
+.jump a { font-size: 12px; color: var(--muted); }
+.jump a:hover { color: var(--text); }
+
 /* ---------- 섹션 제목 + 그리드(웹 3열) ---------- */
-section { padding: var(--s3) var(--pad) 0; }
+section { padding: var(--s2) var(--pad) 0; }
 h2 { max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px; font-weight: 600; letter-spacing: .02em; }
 /* 섹션 제목(Branding / Product / Campaign)은 우선 화면에서 숨김. 다시 보이게 하려면 아래 한 줄을 지우세요. */
 section h2 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

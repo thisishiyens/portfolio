@@ -51,7 +51,8 @@ mq.addEventListener("change", () => { const h = document.querySelector(".hero");
 
 /* ---------- 메인 페이지 ---------- */
 function home() {
-  let h = '<div class="hero">' + heroInner() + "</div>";
+  let h = '<div class="hero">' + heroInner() + "</div>" +
+    '<nav class="jump">' + SECTIONS.map(s => '<a href="#' + s.id + '">' + esc(s.name) + "</a>").join("") + "</nav>";   /* 메인 이미지 아래 섹션 바로가기 */
   h += '<div id="work">';
   SECTIONS.forEach(s => {
     const list = PROJECTS.filter(p => p.cat === s.id);
