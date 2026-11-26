@@ -8,14 +8,18 @@ const ABOUT = {
   title: "LEE YENA",                 // 제목 (18px)
   sub: "Visual Designer",            // 회색 작은 글씨 (12px)
 
-  desc:                              // 소개 글 (13px)
-    "복잡한 기준을 쉬운 UI/UX와 디자인 시스템으로 풀어, 0→1 구축부터 지표 개선까지 이끄는 디자이너입니다. " +
-    "프로젝트 초기에 업무 흐름과 역할, 요청 조건을 먼저 정리해 구성원이 같은 기준으로 움직일 수 있는 구조를 만듭니다. " +
-    "결과물과 함께 템플릿·가이드·검수 기준을 남겨 반복 업무의 품질과 운영 효율을 관리합니다. " +
-    "기획자, 개발자, 마케터, 콘텐츠 PM, 운영 담당자, 외부 제작사와 일정과 요구사항을 문서화하며 협업합니다.\n\n" +
-    "Tools\nFigma, Adobe CC, Midjourney, Adobe Firefly, Claude, ChatGPT, Gemini, Notion, Slack\n\n" +
-    "Language\n비즈니스 고급 한국어, 일본어 중급(JLPT N3), 중국어 초급\n\n" +
-    "Contact\nlyn_biz@naver.com",
+  desc:                              // 소개 글 (13px). 줄바꿈은 \n, 굵은 글씨는 __이렇게__ 감싸세요.
+    "복잡한 기준을 쉬운 UI/UX와 디자인 시스템으로 풀어,\n" +
+    "0→1 구축부터 지표 개선까지 이끄는 디자이너입니다.\n" +
+    "프로젝트 초기에 업무 흐름과 역할, 요청 조건을 먼저 정리해\n" +
+    "구성원이 같은 기준으로 움직일 수 있는 구조를 만듭니다.\n\n" +
+    "결과물과 함께 템플릿·가이드·검수 기준을 남겨\n" +
+    "반복 업무의 품질과 운영 효율을 관리합니다.\n" +
+    "기획자, 개발자, 마케터, 콘텐츠 PM, 운영 담당자, 외부 제작사 등의\n" +
+    "일정과 요구사항을 문서화하며 협업합니다.\n\n" +
+    "__Tools__\nFigma, Adobe CC, Midjourney, Adobe Firefly, Claude, ChatGPT, Gemini, Notion, Slack\n\n" +
+    "__Language__\n비즈니스 고급 한국어, 일본어 중급(JLPT N3), 중국어 초급\n\n" +
+    "__Contact__\nlyn_biz@naver.com",
 
   /* 사진: 지금은 비어 있어 글만 나옵니다. 예) images: ["about/1.jpg", "about/2.jpg"] 처럼 적으면 왼쪽에 사진이 나옵니다. */
   images: []

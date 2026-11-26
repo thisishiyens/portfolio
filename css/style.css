@@ -135,6 +135,7 @@ h2 { display: none; max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px
 .sub { font-size: 12px; color: var(--muted); margin: 0 0 var(--s2); }                          /* 부제목 12px */
 .sub a { color: var(--text); border-bottom: 1px solid var(--text); }
 .desc { font-size: 13px; line-height: 1.8; margin: 0; white-space: pre-line; }            /* 설명 13px, 행간 1.8 */
+.lb { font-weight: 600; }   /* About 의 Tools / Language / Contact 소제목 */
 .hl { font-weight: 500; background: #fff4b0; border-radius: var(--r1); padding: 0 2px; }   /* 강조: 굵게 + 연한 노랑 형광펜 */
 .meta { font-size: 12px; color: var(--muted); margin: var(--s2) 0 0; }   /* 맨 마지막 줄: 기여도 · 연도 */
 .imgs { display: flex; flex-direction: column; gap: var(--s1); }
