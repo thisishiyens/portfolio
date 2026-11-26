@@ -36,6 +36,9 @@ const fe = document.getElementById("femail");
 fe.textContent = S.email;
 fe.href = "mailto:" + S.email;
 /* 상단 Contact 버튼: 맨 아래(이메일이 보이는 곳)로 부드럽게 내려감 */
+/* 상단 메뉴 높이를 재서 css 에 알려 줌 (섹션 바로가기를 그 아래에 붙이기 위해) */
+const setHH = () => document.documentElement.style.setProperty("--hh", document.querySelector("header").offsetHeight + "px");
+setHH(); window.addEventListener("resize", setHH);
 document.getElementById("contact").addEventListener("click", e => {
   e.preventDefault();
   window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
@@ -105,7 +108,7 @@ function detail(p) {
   const imgs = imgsHtml(p.images, p.title);
   app.innerHTML = '<article class="detail"><div class="imgs">' + imgs + '</div><div class="info">' +
     '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
-    "<h1>" + esc(p.title) + '</h1><p class="sub">' + sub + '</p><p class="desc">' + esc(p.desc) + "</p>" +
+    "<h1>" + esc(p.title) + '</h1><p class="sub">' + sub + '</p><p class="desc">' + esc(p.desc) + '</p><p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>" +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div></article>";
 }
