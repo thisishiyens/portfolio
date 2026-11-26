@@ -141,6 +141,10 @@ function route() {
   const el = id && document.getElementById(id);
   if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
 }
+/* ---------- 이미지 저장 막기(사용자 요청): 우클릭 메뉴·끌어서 저장·모바일 길게 눌러 저장을 막는다. 캡처까지는 막을 수 없다 ---------- */
+document.addEventListener("contextmenu", e => { if (e.target.closest("img, video, .ph, .lightbox")) e.preventDefault(); });
+document.addEventListener("dragstart", e => { if (e.target.closest("img, video")) e.preventDefault(); });
+
 /* ---------- 상세 이미지 확대 보기: 이미지를 누르면 크게, 다시 누르거나 Esc 로 닫기, 좌우 방향키로 넘기기 ---------- */
 let lb = null, lbList = [], lbIdx = 0;
 function lbClose() { if (lb) { lb.remove(); lb = null; document.body.style.overflow = ""; } }
