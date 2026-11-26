@@ -17,7 +17,7 @@ const PROJECTS = SECTIONS.flatMap(s => s.items.map(p => ({ ...p, cat: s.id })));
 
 /* 사이트 기본 정보 (site.js 에 문제가 있어도 사이트가 멈추지 않도록 기본값을 둡니다) */
 const S = typeof SITE !== "undefined" ? SITE
-  : { name: "PORTFOLIO", role: "", tagline: "", email: "", hero: "", heroMobile: "" };
+  : { name: "PORTFOLIO", role: "", tagline: "", email: "", hero: "", heroMobile: "", intro: null };
 const A = typeof ABOUT !== "undefined" ? ABOUT : { title: "About", sub: "", desc: "", images: [] };
 const C = typeof CAREER !== "undefined" ? CAREER : { title: "Career", intro: "", items: [] };
 
@@ -58,10 +58,20 @@ function heroInner() {
 }
 mq.addEventListener("change", () => { const h = document.querySelector(".hero"); if (h) h.innerHTML = heroInner(); });
 
+/* ---------- 맨 위 검정 소개 영역 (content/site.js 의 intro) ---------- */
+function introHTML() {
+  const t = S.intro;
+  if (!t || !t.title) return "";
+  return '<div class="intro"><h1>' + esc(t.title).replace(", ", ',<br class="mb"> ') + "</h1>" +
+    (t.paragraphs || []).map(x => "<p>" + esc(x) + "</p>").join("") +
+    ((t.steps && t.steps.length) ? '<div class="steps">' + t.steps.map(x => "<span>" + esc(x) + "</span>").join('<i>→</i>') + "</div>" : "") +
+    "</div>";
+}
+
 /* ---------- 메인 페이지 ---------- */
 function home() {
   /* 메인 이미지·영상 파일을 content/site.js 에 적어야 나옵니다. 비어 있으면 아예 나오지 않습니다. */
-  let h = (S.hero || S.heroMobile ? '<div class="hero">' + heroInner() + "</div>" : "") +
+  let h = introHTML() + (S.hero || S.heroMobile ? '<div class="hero">' + heroInner() + "</div>" : "") +
     '<nav class="jump">' + SECTIONS.map(s => '<a href="#' + s.id + '">' + esc(s.name) + "</a>").join("") + "</nav>";   /* 메인 이미지 아래 섹션 바로가기 */
   h += '<div id="work">';
   SECTIONS.forEach(s => {

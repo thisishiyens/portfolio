@@ -15,6 +15,18 @@ const SITE = {
   /* 연락처 */
   email: "dltkdl5656@naver.com",
 
+  /* ---------- 맨 위 검정 소개 영역 ----------
+     title 을 비우면("") 이 영역은 나오지 않습니다.
+     paragraphs 는 문단 단위(문단 사이가 한 칸 띄워짐), steps 는 아래 둥근 버튼들입니다. */
+  intro: {
+    title: "Building Systems, Visualizing Data.",
+    paragraphs: [
+      "복잡한 기준을 쉬운 UI/UX와 디자인 시스템으로 풀어, 함께 판단할 수 있는 기준과 반복해서 활용할 수 있는 구조를 남깁니다.",
+      "브랜드와 서비스, 캠페인의 여러 접점을 연결하고, 협업하는 사람들이 신뢰할 수 있는 템플릿과 가이드를 만들며, 사용자에게는 더 명확한 경험을 제공하겠습니다."
+    ],
+    steps: ["Define", "Structure", "Design", "Operate"]
+  },
+
   /* ---------- 맨 위 큰 이미지 (영상 / GIF / 이미지 모두 가능) ----------
      images 폴더에 파일을 넣고, 파일 이름만 적으세요. 예) "hero.mp4"
      .mp4 .webm 은 영상(소리 없이 자동 반복), .gif .jpg .png .webp 는 이미지로 보입니다.
