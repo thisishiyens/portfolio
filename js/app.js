@@ -39,6 +39,8 @@ fe.href = "mailto:" + S.email;
 /* 상단 메뉴 높이를 재서 css 에 알려 줌 (섹션 바로가기를 그 아래에 붙이기 위해) */
 const setHH = () => document.documentElement.style.setProperty("--hh", document.querySelector("header").offsetHeight + "px");
 setHH(); window.addEventListener("resize", setHH);
+if (window.ResizeObserver) new ResizeObserver(setHH).observe(document.querySelector("header"));   /* 글꼴이 늦게 떠서 메뉴 높이가 바뀌어도 다시 맞춤 */
+if (document.fonts) document.fonts.ready.then(setHH);
 document.getElementById("contact").addEventListener("click", e => {
   e.preventDefault();
   window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
