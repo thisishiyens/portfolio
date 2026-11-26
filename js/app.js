@@ -67,7 +67,7 @@ function introHTML() {
 function home() {
   /* 메인 이미지·영상 파일을 content/site.js 에 적어야 나옵니다. 비어 있으면 아예 나오지 않습니다. */
   let h = introHTML() + (S.hero || S.heroMobile ? '<div class="hero">' + heroInner() + "</div>" : "") +
-    '<nav class="jump">' + SECTIONS.map(s => '<a href="#' + s.id + '">' + esc(s.name) + "</a>").join("") + "</nav>";   /* 메인 이미지 아래 섹션 바로가기 */
+    '<nav class="jump">' + SECTIONS.map(s => '<a href="#' + s.id + '" data-t="' + esc(s.name) + '">' + esc(s.name) + "</a>").join("") + "</nav>";   /* 메인 이미지 아래 섹션 바로가기 */
   h += '<div id="work">';
   SECTIONS.forEach(s => {
     const list = PROJECTS.filter(p => p.cat === s.id);
@@ -134,6 +134,8 @@ function route() {
   if (id === "about")  { aboutPage();  view = "about";  window.scrollTo(0, 0); return; }
   if (id === "career") { careerPage(); view = "career"; window.scrollTo(0, 0); return; }
   if (view !== "home") { home(); view = "home"; window.scrollTo(0, 0); }
+  /* 누른 섹션명은 진하게(볼드) 유지 */
+  document.querySelectorAll(".jump a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + id));
   const el = id && document.getElementById(id);
   if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
 }

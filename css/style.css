@@ -97,8 +97,10 @@ header {
 /* ---------- 메인 이미지 아래 섹션 바로가기 (12px 회색, 마우스를 올리면 검정) ---------- */
 .hero + .jump { margin-top: 0; }   /* 메인 이미지가 있을 때는 바로 아래에 붙임 */
 .jump { margin-top: var(--s1); position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding: var(--s1) max(var(--pad), calc((100% - 1400px) / 2)); display: flex; justify-content: flex-start; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* PC: 썸네일 시작선에 맞춰 왼쪽 / 모바일: 가운데 */
-.jump a { font-size: 12px; color: var(--muted); }
+.jump a { font-size: 13px; color: var(--muted); display: inline-grid; }   /* 섹션 바로가기 13px */
+.jump a::after { content: attr(data-t); font-weight: 600; height: 0; visibility: hidden; overflow: hidden; }   /* 볼드로 바뀌어도 글자 폭이 흔들리지 않게 자리 확보 */
 .jump a:hover { color: var(--text); }
+.jump a.on { color: var(--text); font-weight: 600; }   /* 누른 섹션명은 검정 + 볼드 유지 */
 
 /* ---------- 섹션 제목 + 그리드(웹 3열) ---------- */
 section { padding: 0 var(--pad); margin-top: var(--s2); }   /* 섹션 사이도 썸네일 간격(--s2)과 같게 → 3개 섹션이 하나의 그리드처럼 이어짐 */
