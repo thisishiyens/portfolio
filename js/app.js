@@ -94,7 +94,7 @@ function imgsHtml(list, alt) {
 /* ---------- About 페이지 (상세 페이지와 같은 구조: 왼쪽 이미지 / 오른쪽 내용) ---------- */
 function aboutPage() {
   const hasImg = A.images && A.images.length;   /* 사진이 없으면 글만 한 줄로 */
-  app.innerHTML = '<article class="detail' + (hasImg ? "" : " solo") + '">' + (hasImg ? '<div class="imgs">' + imgsHtml(A.images, A.title) + "</div>" : "") + '<div class="info">' +
+  app.innerHTML = '<article class="detail' + (hasImg ? " about" : " solo") + '">' + (hasImg ? '<div class="imgs">' + imgsHtml(A.images, A.title) + "</div>" : "") + '<div class="info">' +
     "<h1>" + esc(A.title) + '</h1><p class="sub">' + esc(A.sub) + '</p><p class="desc">' + esc(A.desc).replace(/__(.+?)__/g, '<b class="lb">$1</b>') + "</p></div></article>";
 }
 

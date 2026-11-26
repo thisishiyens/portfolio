@@ -127,6 +127,7 @@ h2 { display: none; max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px
   max-width: 1400px; margin: 0 auto; padding: var(--s3) var(--pad) 0;
   display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--s3); align-items: start;
 }
+.detail.about { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }   /* About: 사진 폭을 줄여 글 높이와 비슷하게 (사진 40% : 글 60%) */
 .detail.solo { grid-template-columns: minmax(0, 1fr); }   /* About: 사진 없이 글만 */
 .detail.solo .info { position: static; max-width: 640px; }
 .info { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 88px); }
@@ -177,7 +178,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
   .intro p { font-size: 13px; }
   .intro .steps span { padding: 8px 10px; }
   .intro .steps i { padding: 0; }
-  .detail { padding: var(--s2) var(--pad) 0; grid-template-columns: 1fr; gap: var(--s2); }
+  .detail, .detail.about { padding: var(--s2) var(--pad) 0; grid-template-columns: 1fr; gap: var(--s2); }
   .career { padding: var(--s2) var(--pad) 0; }
   .row { grid-template-columns: 1fr; gap: 8px; }
   .info { position: static; order: -1; }

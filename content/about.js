@@ -21,6 +21,6 @@ const ABOUT = {
     "__Language__\n영어 고급, 일본어 중급(JLPT N3), 중국어 초급\n\n" +
     "__Contact__\nlyn_biz@naver.com",
 
-  /* 사진: 지금은 비어 있어 글만 나옵니다. 예) images: ["about/1.jpg", "about/2.jpg"] 처럼 적으면 왼쪽에 사진이 나옵니다. */
-  images: []
+  /* 사진: 왼쪽에 나옵니다. (비우면 글만 나옵니다.) 예) images: ["about/1.jpg", "about/2.jpg"] 처럼 적으면 왼쪽에 사진이 나옵니다. */
+  images: ["about/1.jpg"]
 };
