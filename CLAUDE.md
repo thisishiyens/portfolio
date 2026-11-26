@@ -43,6 +43,7 @@ _backup/          예전 버전 (공개하지 않음)
 - 섹션 제목(Branding / Product / Campaign) 큰 글씨는 **화면에 보이지 않는다**(css `h2 { display:none }`, 사용자 요청). 대신 바로가기 줄로 이동하고, 3개 섹션의 썸네일은 간격 `--s2` 로 하나의 그리드처럼 이어진다. 소개 제목은 모바일에서 쉼표 뒤에서 줄바꿈.
 - 썸네일 **16:9**. 글씨는 왼쪽 정렬. 메인 목록의 썸네일 아래 **3줄**: 프로젝트명 **16px** semibold / 서브 설명(sub) **13px** 회색 / 연도 **12px** light 회색. 줄 사이 간격은 제목↔서브 `--t1`, 서브↔연도 `--t2` 둘 다 10px로 동일.
 - 상세 페이지 설명 글 규칙: 문장마다 줄을 바꾸지 않고 **문단 단위**로 길게 쓴다(문단 사이만 빈 줄 한 칸). 문장은 "~했습니다"로 끝맺고, 구성은 소개 → 방향·핵심 작업 → 성과 순. 중요한 내용은 `**이렇게**` 감싸 Medium(500) 굵기 + 연한 노랑(#fff4b0) 형광펜(작업당 2~3곳 정도).
+- 상세 페이지 제목·부제목 아래 **태그**(content 의 `tags`, 선택): 회색 배경(--ph) + 회색 글씨(#5c5c5c) **11px**(사용자 요청, 12px 규칙의 예외), 모서리 --r1, 간격 8px.
 - 상세 페이지 맨 마지막 줄(12px 회색): "기여도 nn% · 연도" (content 의 `contrib` + `year`. contrib 가 없으면 연도만).
 - 썸네일 이미지는 슬라이드 전체가 아니라 각 작업의 가장 좋은 비주얼 한 장을 잘라 쓴다(BatCrew 참고). (sub 가 비어 있으면 그 줄은 생략)
 - 작업 총 9개 = Branding 3 + Product 3 + Campaign 3 (3열 × 3줄, 모든 줄이 꽉 참). Branding 의 BlerOn 은 로고 + 브랜드 키트 + 행사 부스를 한 작업으로 합친 것. Campaign 은 Haribo Exhibition in Jeju MKT(해피월드+할로윈) / miffy Exhibition in Seoul MKT(미피와 마법 우체통) / Kakao IP Promotion. Product 는 BlerOn Mobile Web / Maystay Mobile Web / ddazua Web (ddazua 내용은 사용자가 추후 교체 예정).

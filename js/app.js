@@ -117,7 +117,8 @@ function detail(p) {
   const imgs = imgsHtml(p.images, p.title);
   app.innerHTML = '<article class="detail"><div class="imgs">' + imgs + '</div><div class="info">' +
     '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
-    "<h1>" + esc(p.title) + '</h1><p class="sub">' + sub + '</p><p class="desc">' + esc(p.desc).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>') + '</p><p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>" +
+    "<h1>" + esc(p.title) + '</h1><p class="sub' + (p.tags && p.tags.length ? " has-tags" : "") + '">' + sub + "</p>" +
+    (p.tags && p.tags.length ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + '<p class="desc">' + esc(p.desc).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>') + '</p><p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>" +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div></article>";
 }
