@@ -91,7 +91,7 @@ header {
 
 /* ---------- 섹션 제목 + 그리드(웹 3열) ---------- */
 section { padding: var(--s3) var(--pad) 0; }
-h2 { max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px; font-weight: 700; letter-spacing: .02em; }   /* 섹션 제목 20px 볼드 */
+h2 { max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px; font-weight: 700; letter-spacing: .02em; text-align: center; }   /* 섹션 제목 20px 볼드, 가운데 정렬 */
 .grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s2);
   max-width: 1400px; margin: 0 auto;
