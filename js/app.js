@@ -35,16 +35,11 @@ document.getElementById("fcopy").textContent = "© " + new Date().getFullYear() 
 const fe = document.getElementById("femail");
 fe.textContent = S.email;
 fe.href = "mailto:" + S.email;
-/* 상단 Contact 버튼: 맨 아래(이메일이 보이는 곳)로 부드럽게 내려감 */
 /* 상단 메뉴 높이를 재서 css 에 알려 줌 (섹션 바로가기를 그 아래에 붙이기 위해) */
 const setHH = () => document.documentElement.style.setProperty("--hh", document.querySelector("header").offsetHeight + "px");
 setHH(); window.addEventListener("resize", setHH);
 if (window.ResizeObserver) new ResizeObserver(setHH).observe(document.querySelector("header"));   /* 글꼴이 늦게 떠서 메뉴 높이가 바뀌어도 다시 맞춤 */
 if (document.fonts) document.fonts.ready.then(setHH);
-document.getElementById("contact").addEventListener("click", e => {
-  e.preventDefault();
-  window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
-});
 
 /* ---------- 메인 큰 이미지 / 영상 ---------- */
 const mq = window.matchMedia("(max-width:760px)");
@@ -63,7 +58,7 @@ function introHTML() {
   const t = S.intro;
   if (!t || !t.title) return "";
   return '<div class="intro"><h1>' + esc(t.title).replace(", ", ',<br class="mb"> ') + "</h1>" +
-    (t.paragraphs || []).map(x => "<p>" + esc(x) + "</p>").join("") +
+    (t.paragraphs || []).map(x => "<p>" + esc(x).replace(/\n/g, "<br>").replace(/\{m\}/g, '<br class="mb">') + "</p>").join("") +
     ((t.steps && t.steps.length) ? '<div class="steps">' + t.steps.map(x => "<span>" + esc(x) + "</span>").join('<i>→</i>') + "</div>" : "") +
     "</div>";
 }
