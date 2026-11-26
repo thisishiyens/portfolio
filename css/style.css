@@ -28,6 +28,8 @@
   --s3: 64px;          /* 큰 간격 */
   --t1: 10px;          /* 썸네일 글: 제목↔서브, 서브↔연도 간격 (둘 다 같은 값) */
   --t2: 10px;
+  --gx: 24px;          /* 썸네일 가로 간격 (3열 사이) */
+  --gy: 48px;          /* 썸네일 세로 간격 (줄과 줄 사이, 섹션 사이) → 가로:세로 = 1:2 */
 
   /* 모서리 둥글기 (이 세 가지만 씁니다) */
   --r1: 4px;           /* 버튼 */
@@ -103,12 +105,12 @@ header {
 .jump a.on { color: var(--text); font-weight: 600; }   /* 누른 섹션명은 검정 + 볼드 유지 */
 
 /* ---------- 섹션 제목 + 그리드(웹 3열) ---------- */
-section { padding: 0 var(--pad); margin-top: var(--s2); }   /* 섹션 사이도 썸네일 간격(--s2)과 같게 → 3개 섹션이 하나의 그리드처럼 이어짐 */
+section { padding: 0 var(--pad); margin-top: var(--gy); }   /* 섹션 사이도 썸네일 세로 간격(--gy)과 같게 → 3개 섹션이 하나의 그리드처럼 이어짐 */
 #work { padding-top: var(--s1); }
 .mb { display: none; }
 h2 { display: none; max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px; font-weight: 700; letter-spacing: .02em; text-align: center; }   /* 섹션 제목 20px 볼드, 가운데 정렬 */
 .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s2);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gy) var(--gx);
   max-width: 1400px; margin: 0 auto;
 }
 
@@ -182,7 +184,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 
 /* ---------- 모바일 (화면 폭 760px 이하): 그리드 1열 ---------- */
 @media (max-width: 760px) {
-  :root { --pad: 16px; }
+  :root { --pad: 16px; --gy: var(--s2); }   /* 모바일은 1열이라 카드 사이를 32px 로 */
   .bar { flex-wrap: wrap; height: auto; padding: 12px var(--pad); gap: 8px var(--s1); }
   .bar .r { display: contents; }
   .bar .logo { order: 1; }
