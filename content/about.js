@@ -18,7 +18,7 @@ const ABOUT = {
     "기획자, 개발자, 마케터, 콘텐츠 PM, 운영 담당자, 외부 제작사 등의\n" +
     "일정과 요구사항을 문서화하며 협업합니다.\n\n" +
     "__Tools__\nFigma, Adobe CC, Midjourney, Adobe Firefly, Claude, ChatGPT, Gemini, Notion, Slack\n\n" +
-    "__Language__\n비즈니스 고급 한국어, 일본어 중급(JLPT N3), 중국어 초급\n\n" +
+    "__Language__\n영어 고급, 일본어 중급(JLPT N3), 중국어 초급\n\n" +
     "__Contact__\nlyn_biz@naver.com",
 
   /* 사진: 지금은 비어 있어 글만 나옵니다. 예) images: ["about/1.jpg", "about/2.jpg"] 처럼 적으면 왼쪽에 사진이 나옵니다. */
