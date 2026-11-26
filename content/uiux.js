@@ -25,7 +25,7 @@
 const UIUX = [
   {
     id:     "uiux-01",
-    title:  "BlerOn Mobile",
+    title:  "BlerOn Mobile Web",
     year:   "2026",
     sub:    "PC 교육 서비스를 모바일 학습·구매 흐름으로",
     link:   "",
@@ -40,7 +40,7 @@ const UIUX = [
   },
   {
     id:     "uiux-03",
-    title:  "Maystay",
+    title:  "Maystay Mobile Web",
     year:   "2026",
     sub:    "체류형 지역 추천 모바일 웹 0→1",
     link:   "https://maystay.vercel.app",
@@ -52,7 +52,7 @@ const UIUX = [
   },
   {
     id:     "uiux-02",
-    title:  "DDAZUA",
+    title:  "ddazua PC / Mobile Web",
     year:   "2025",
     sub:    "검색 접근성을 높인 모바일 홈 리디자인",
     link:   "https://www.ddazua.com/",
