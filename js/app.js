@@ -35,7 +35,11 @@ document.getElementById("fcopy").textContent = "© " + new Date().getFullYear() 
 const fe = document.getElementById("femail");
 fe.textContent = S.email;
 fe.href = "mailto:" + S.email;
-document.getElementById("contact").href = "mailto:" + S.email;   /* 상단 Contact 버튼 */
+/* 상단 Contact 버튼: 맨 아래(이메일이 보이는 곳)로 부드럽게 내려감 */
+document.getElementById("contact").addEventListener("click", e => {
+  e.preventDefault();
+  window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+});
 
 /* ---------- 메인 큰 이미지 / 영상 ---------- */
 const mq = window.matchMedia("(max-width:760px)");
