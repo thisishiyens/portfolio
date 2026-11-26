@@ -52,7 +52,7 @@ const UIUX = [
   },
   {
     id:     "uiux-02",
-    title:  "ddazua PC / Mobile Web",
+    title:  "ddazua Web",
     year:   "2025",
     sub:    "검색 접근성을 높인 모바일 홈 리디자인",
     link:   "https://www.ddazua.com/",

@@ -25,7 +25,7 @@
 const CAMPAIGN = [
   {
     id:     "campaign-01",
-    title:  "Haribo Happy World Season MKT",
+    title:  "Haribo Exhibition in Jeju MKT",
     year:   "2024",
     sub:    "제주 확장부터 할로윈 시즌까지, 전시 마케팅",
     link:   "",
@@ -45,7 +45,7 @@ const CAMPAIGN = [
   },
   {
     id:     "campaign-02",
-    title:  "Miffy and the Magical Mailbox MKT",
+    title:  "miffy Exhibition in Seoul MKT",
     year:   "2024",
     sub:    "마케팅 디자인으로 옥외광고 기간 매출 110% 상승",
     link:   "",
