@@ -19,11 +19,12 @@ const SITE = {
      title 을 비우면("") 이 영역은 나오지 않습니다.
      paragraphs 는 문단 단위(문단 사이가 한 칸 띄워짐), steps 는 아래 둥근 버튼들입니다. */
   intro: {
-    title: "Building Systems, Visualizing Data.",
+    title: "Clarity in Brand, Consistency in Experience.",
     /* 줄바꿈: \n = PC·모바일 모두 줄바꿈 / {m} = 모바일에서만 줄바꿈 (앞에 공백을 꼭 두세요) */
     paragraphs: [
-      "복잡한 기준을 쉬운 UI/UX와 디자인 시스템으로 풀어,\n함께 판단할 수 있는 기준과 반복해서 활용할 수 있는 구조를 남깁니다.",
-      "브랜드와 서비스, 캠페인의 여러 접점을 연결하고, {m}협업하는 사람들이 신뢰할 수 있는 템플릿과 가이드를 만들며,\n사용자에게는 더 명확한 경험을 제공합니다."
+      "브랜드의 핵심 기준을 세우고, {m}이를 프로덕트와 캠페인의 모든 접점으로 확장합니다.\n" +
+      "복잡한 문제를 직관적인 디자인 시스템과 UI/UX로 풀어내,\n" +
+      "사용자에게는 일관된 경험을 제공하고 {m}팀에게는 반복 활용할 수 있는 가이드와 구조를 남깁니다."
     ],
     steps: ["Define", "Structure", "Design", "Operate"]
   },
