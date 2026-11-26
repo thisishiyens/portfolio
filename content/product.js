@@ -51,9 +51,7 @@ const PRODUCT = [
     thumb:  "product-03/thumb.jpg",
     images: [
       "product-03/1.jpg",
-      "product-03/2.jpg",
-      "product-03/3.jpg",
-      "product-03/4.jpg"
+      "product-03/2.jpg"
     ]
   },
   {
