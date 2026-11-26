@@ -17,7 +17,7 @@
 ## 2. 폴더 구조 (사용자가 코드 편집기에서 급히 고칠 수 있게 나뉘어 있다)
 ```
 index.html        뼈대
-content/          ★ 글 수정 전용: site.js(이름·연락처·메인 영상) / about.js / career.js / branding.js / uiux.js / campaign.js
+content/          ★ 글 수정 전용: site.js(이름·연락처·메인 영상) / about.js / career.js / branding.js / product.js / campaign.js
 images/<작업id>/   ★ 이미지 전용: thumb.jpg, 1.jpg, 2.jpg ...   (hero 파일은 images/ 바로 아래, About 사진은 images/about/)
 css/style.css     디자인
 js/app.js         동작
@@ -35,7 +35,7 @@ _backup/          예전 버전 (공개하지 않음)
 - 키컬러 `#00674f` 는 **쓰지 않는다.** 호버 효과도 **없다.** (필요하면 검정 정도만. 예외: 메인 이미지 아래 섹션 바로가기 글씨는 사용자 요청으로 회색 → 호버 시 검정)
 - 메인 이미지 바로 아래에 Branding / Product / Campaign 바로가기(13px 회색, 누르면 검정+볼드로 유지, **PC는 썸네일 시작선에 맞춰 왼쪽 / 모바일은 가운데**, 클릭하면 해당 섹션으로 이동)를 둔다.
 - 글꼴: 영문 Poppins, 한글 Pretendard (둘 다 OFL). 본문 글자 크기는 **12~24px** 안에서만.
-- 섹션 3개: Branding / Product / Campaign. (Product 는 예전 UI/UX 의 화면 이름. 파일·주소 이름 uiux 는 그대로 둔다.) 메인 페이지 작업 목록은 웹 그리드 3열, 모바일(760px 이하) 1열이고 개수 제한 없이 전부 보인다(MORE VIEW 없음).
+- 섹션 3개: Branding / Product / Campaign. (파일·주소 이름도 product 로 통일했다. 예전 이름 uiux 는 더 이상 쓰지 않는다.) 메인 페이지 작업 목록은 웹 그리드 3열, 모바일(760px 이하) 1열이고 개수 제한 없이 전부 보인다(MORE VIEW 없음).
   상세 페이지는 왼쪽 이미지 / 오른쪽 내용 구조 그대로. 패딩 값은 모두 짝수로 쓴다.
 - 상단 헤더: 왼쪽 이름 로고, 오른쪽에 **Works / About me** 메뉴만 둔다(Career 는 숨김)(예전 검정 Contact 버튼은 사용자 요청으로 뺐다. 이메일은 맨 아래). 모바일은 위 줄에 로고, 아래 줄에 메뉴. Works = 메인의 작업 목록으로 내려감,
   About = 글 + 정사각형 사진(content/about.js, images/about/1.jpg. PC는 사진이 오른쪽, 모바일은 사진이 위. 비우면 글만), Career = 선으로 나눈 시간순 줄글(content/career.js, 지금은 메뉴에서 숨김). 주소는 #work / #about / #career.

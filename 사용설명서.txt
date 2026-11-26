@@ -19,7 +19,7 @@
   │   ├─ about.js          About 페이지 (소개 글. 사진은 지금 없음)
   │   ├─ career.js         Career 페이지 (기간·제목·설명 줄)
   │   ├─ branding.js       Branding 작업물 목록
-  │   ├─ uiux.js           Product 작업물 목록 (화면에는 Product 로 보입니다)
+  │   ├─ product.js        Product 작업물 목록
   │   └─ campaign.js       Campaign 작업물 목록
   │
   └─ images/             ★ 사진·영상을 넣는 곳 ★

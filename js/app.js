@@ -10,7 +10,7 @@ const IMG_DIR = "images/";
    content 파일 하나에 오타가 있어도 다른 섹션은 정상적으로 보이도록 안전장치를 걸어 두었습니다. */
 const SECTIONS = [
   { id: "branding", name: "Branding", items: typeof BRANDING !== "undefined" ? BRANDING : [] },
-  { id: "uiux",     name: "Product",  items: typeof UIUX     !== "undefined" ? UIUX     : [] },
+  { id: "product",  name: "Product",  items: typeof PRODUCT  !== "undefined" ? PRODUCT  : [] },
   { id: "campaign", name: "Campaign", items: typeof CAMPAIGN !== "undefined" ? CAMPAIGN : [] }
 ];
 const PROJECTS = SECTIONS.flatMap(s => s.items.map(p => ({ ...p, cat: s.id })));
@@ -140,4 +140,10 @@ function route() {
   if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
+/* 처음 열거나 새로고침할 때는 항상 맨 위(메인 글귀)부터 보여 줍니다. 섹션명·Works 를 눌렀을 때만 그 위치로 내려갑니다. */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+{
+  const first = decodeURIComponent(location.hash.slice(1));
+  if (first === "work" || SECTIONS.some(x => x.id === first)) history.replaceState(null, "", location.pathname + location.search);
+}
 route();
