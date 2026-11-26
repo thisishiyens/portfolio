@@ -45,7 +45,7 @@ const CAMPAIGN = [
   },
   {
     id:     "campaign-02",
-    title:  "Miffy and the Magical Mailbox",
+    title:  "Miffy and the Magical Mailbox MKT",
     year:   "2024",
     sub:    "마케팅 디자인으로 옥외광고 기간 매출 110% 상승",
     link:   "",

@@ -45,7 +45,7 @@ _backup/          예전 버전 (공개하지 않음)
 - 상세 페이지 설명 글 규칙: 문장마다 줄을 바꾸지 않고 **문단 단위**로 길게 쓴다(문단 사이만 빈 줄 한 칸). 문장은 "~했습니다"로 끝맺고, 구성은 소개 → 방향·핵심 작업 → 성과 순. 중요한 내용은 `**이렇게**` 감싸 Medium(500) 굵기 + 연한 노랑(#fff4b0) 형광펜(작업당 2~3곳 정도).
 - 상세 페이지 맨 마지막 줄(12px 회색): "기여도 nn% · 연도" (content 의 `contrib` + `year`. contrib 가 없으면 연도만).
 - 썸네일 이미지는 슬라이드 전체가 아니라 각 작업의 가장 좋은 비주얼 한 장을 잘라 쓴다(BatCrew 참고). (sub 가 비어 있으면 그 줄은 생략)
-- 작업 총 9개 = Branding 3 + Product 3 + Campaign 3 (3열 × 3줄, 모든 줄이 꽉 참). Branding 의 BlerOn 은 로고 + 브랜드 키트 + 행사 부스를 한 작업으로 합친 것. Campaign 은 Haribo Happy World Season MKT(해피월드+할로윈) / Miffy and the Magical Mailbox / Kakao IP Promotion. Product 는 BlerOn Mobile Web / Maystay Mobile Web / ddazua PC / Mobile Web (ddazua 내용은 사용자가 추후 교체 예정).
+- 작업 총 9개 = Branding 3 + Product 3 + Campaign 3 (3열 × 3줄, 모든 줄이 꽉 참). Branding 의 BlerOn 은 로고 + 브랜드 키트 + 행사 부스를 한 작업으로 합친 것. Campaign 은 Haribo Happy World Season MKT(해피월드+할로윈) / Miffy and the Magical Mailbox MKT / Kakao IP Promotion. Product 는 BlerOn Mobile Web / Maystay Mobile Web / ddazua PC / Mobile Web (ddazua 내용은 사용자가 추후 교체 예정).
 - 합치거나 뺀 작업의 예전 이미지 폴더는 지우지 않고 `_backup/` 으로 옮겨 둔다.
 - 개인정보·민감 정보(전화번호, 집행 예산·비용 금액 등)는 사이트 글에 넣지 않는다. 이력서의 예산·비용 수치는 뺀다.
 - 모서리 둥글기는 `--r1` 4px(버튼) / `--r2` 8px(썸네일) / `--r3` 12px(상세·About 큰 이미지) 세 가지만 쓴다. 메인 큰 영상(hero)은 화면 끝까지 꽉 차므로 둥글게 하지 않는다.
