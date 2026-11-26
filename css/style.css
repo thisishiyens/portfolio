@@ -96,7 +96,7 @@ header {
 
 /* ---------- 메인 이미지 아래 섹션 바로가기 (12px 회색, 마우스를 올리면 검정) ---------- */
 .hero + .jump { margin-top: 0; }   /* 메인 이미지가 있을 때는 바로 아래에 붙임 */
-.jump { margin-top: var(--s1); position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding: var(--s1) var(--pad); display: flex; justify-content: center; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* 가운데 배치 */
+.jump { margin-top: var(--s1); position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding: var(--s1) max(var(--pad), calc((100% - 1400px) / 2)); display: flex; justify-content: flex-start; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* PC: 썸네일 시작선에 맞춰 왼쪽 / 모바일: 가운데 */
 .jump a { font-size: 12px; color: var(--muted); }
 .jump a:hover { color: var(--text); }
 
@@ -190,6 +190,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
   .hero { aspect-ratio: 4 / 5; }
   .mb { display: inline; }
   .intro p { font-size: 13px; }
+  .jump { justify-content: center; }   /* 모바일: 섹션 바로가기는 가운데 */
   .intro h1 { line-height: 1.5; }   /* 모바일: 제목 두 줄 사이를 더 넓게 */
   .intro .steps span { padding: 6px 10px; }
   .intro .steps i { padding: 0; }
