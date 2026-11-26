@@ -141,6 +141,27 @@ function route() {
   const el = id && document.getElementById(id);
   if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
 }
+/* ---------- 상세 이미지 확대 보기: 이미지를 누르면 크게, 다시 누르거나 Esc 로 닫기, 좌우 방향키로 넘기기 ---------- */
+let lb = null, lbList = [], lbIdx = 0;
+function lbClose() { if (lb) { lb.remove(); lb = null; document.body.style.overflow = ""; } }
+function lbShow(i) { lbIdx = (i + lbList.length) % lbList.length; lb.querySelector("img").src = lbList[lbIdx].src; }
+document.addEventListener("click", e => {
+  if (lb) { lbClose(); return; }
+  const im = e.target.closest(".detail:not(.about) .imgs img");
+  if (!im) return;
+  lbList = Array.from(document.querySelectorAll(".detail:not(.about) .imgs img"));
+  lb = document.createElement("div"); lb.className = "lightbox"; lb.innerHTML = "<img alt=''>";
+  document.body.appendChild(lb); document.body.style.overflow = "hidden";
+  lbShow(lbList.indexOf(im));
+});
+document.addEventListener("keydown", e => {
+  if (!lb) return;
+  if (e.key === "Escape") lbClose();
+  else if (e.key === "ArrowRight") lbShow(lbIdx + 1);
+  else if (e.key === "ArrowLeft") lbShow(lbIdx - 1);
+});
+window.addEventListener("hashchange", lbClose);
+
 window.addEventListener("hashchange", route);
 /* 처음 열거나 새로고침할 때는 항상 맨 위(메인 글귀)부터 보여 줍니다. 섹션명·Works 를 눌렀을 때만 그 위치로 내려갑니다. */
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
