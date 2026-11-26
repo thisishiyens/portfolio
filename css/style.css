@@ -62,7 +62,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- 상단 메뉴 ---------- */
 header {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
-  background: var(--bg); border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);   /* 배경 불투명도 90% */
 }
 .bar {
   display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
@@ -84,7 +84,7 @@ header {
 .hero img, .hero video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ---------- 메인 이미지 아래 섹션 바로가기 (12px 회색, 마우스를 올리면 검정) ---------- */
-.jump { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: var(--bg); padding: var(--s1) var(--pad); display: flex; justify-content: center; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* 가운데 배치 */
+.jump { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding: var(--s1) var(--pad); display: flex; justify-content: center; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* 가운데 배치 */
 .jump a { font-size: 12px; color: var(--muted); }
 .jump a:hover { color: var(--text); }
 
