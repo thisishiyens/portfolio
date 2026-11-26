@@ -161,6 +161,7 @@ h2 { display: none; max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px
 .imgs { display: flex; flex-direction: column; gap: var(--s1); }
 .imgs img { width: 100%; display: block; border-radius: var(--r3); }
 .ph { background: var(--ph); border-radius: var(--r3); overflow: hidden; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 12px; letter-spacing: .1em; }
+.detail:not(.about) .imgs { gap: 0; }   /* 작업 상세 이미지 사이 간격 없음(사용자 요청) */
 .detail:not(.about) .imgs img, .detail:not(.about) .imgs .ph { border-radius: 0; }   /* 작업 상세 이미지는 둥글기 없음(사용자 요청). About 사진만 --r3 */
 .detail:not(.about) .imgs img { cursor: zoom-in; }   /* 누르면 확대 */
 .lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(255,255,255,.96); display: flex; align-items: center; justify-content: center; padding: var(--pad); cursor: zoom-out; }
