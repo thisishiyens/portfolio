@@ -143,14 +143,16 @@ function detail(p) {
   const foot = '<div class="foot">' + metas +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div>";
-  /* 배너(banner)가 있는 작업: 첫 줄은 화면 폭 배너. 배너 안 순서 = 제목·연도·태그 → Role/Scope/Output 표 → 설명 2줄(첫 줄의 글, 16px, 배너 맨 아래). 넓은 화면은 배너 위에 글이 올라가고(tone: dark=흰 글씨 / light=검정 글씨), 좁은 화면·모바일은 정사각 배너 아래에 글이 나온다 */
+  /* 배너(banner)가 있는 작업: 첫 줄은 화면 폭 배너. 배너 안 순서 = 제목·연도·태그 → Role/Scope/Output 표 → 설명 2줄(content 의 bannerDesc, 16px, 배너 맨 아래. bannerDesc 가 없는 예전 작업은 첫 줄의 글을 씀). 넓은 화면은 배너 위에 글이 올라가고(tone: dark=흰 글씨 / light=검정 글씨), 좁은 화면·모바일은 정사각 배너 아래에 글이 나온다 */
+  const sep = !!p.banner && typeof p.bannerDesc === "string";   /* bannerDesc 가 있으면 배너 설명 2줄은 따로 쓰고, 첫 줄(sections[0])은 일반 줄로 나온다 */
+  const bnFoot = sep ? secs.length === 0 : secs.length === 1;
   const banner = (k, s) => {
     const pic = (p.bannerMobile ? '<source media="(max-width:1100px)" srcset="' + esc(src(p.bannerMobile)) + '">' : "") + '<img src="' + esc(src(p.banner)) + '" alt="' + esc(p.title) + '">';
-    return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info"><div class="dhead">' + top + '</div>' + facts + '<div class="bdesc">' + secText(s.desc) + "</div>" + (secs.length === 1 ? foot : "") + "</div></div>";
+    return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info"><div class="dhead">' + top + '</div>' + facts + '<div class="bdesc">' + secText(s.desc) + "</div>" + (bnFoot ? foot : "") + "</div></div>";
   };
-  app.innerHTML = '<article class="detail rows' + (p.banner ? " has-banner" : "") + '">' + (p.banner ? "" : back) + secs.map((s, k) =>
-    (k === 0 && p.banner) ? banner(k, s) :
-    '<div class="drow' + (k === 0 ? " d1" : "") + '">' + gallery(s.images, p.title) + '<div class="info">' +
+  app.innerHTML = '<article class="detail rows' + (p.banner ? " has-banner" : "") + '">' + (p.banner ? "" : back) + (sep ? banner(0, { desc: p.bannerDesc }) : "") + secs.map((s, k) =>
+    (k === 0 && p.banner && !sep) ? banner(k, s) :
+    '<div class="drow' + (k === 0 && !p.banner ? " d1" : "") + '">' + gallery(s.images, p.title) + '<div class="info">' +
     ((k === 0 && !p.banner) ? head : "") + secText(s.desc) + (k === secs.length - 1 ? foot : "") + "</div></div>").join("") + "</article>";
   document.querySelectorAll(".drow .track").forEach(syncSlide);
   keepFirstSlide();
