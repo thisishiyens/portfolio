@@ -130,7 +130,6 @@ section.open .card.extra { display: block; }
 .t img { width: 100%; height: 100%; object-fit: cover; }
 .card b  { display: block; margin-top: var(--s1); font-weight: 600; font-size: 18px; line-height: 1.2; text-align: left; }   /* 1줄: 프로젝트명 18px */
 .card .s { display: block; margin-top: var(--t1); font-weight: 300; font-size: 14px; line-height: 1.2; color: var(--text); text-align: left; }      /* 2줄: 서브 설명 14px #111 */
-.card em { display: block; margin-top: var(--t2); font-style: normal; font-weight: 300; color: var(--muted); font-size: 12px; line-height: 1.2; text-align: left; } /* 3줄: 연도 12px */
 
 /* ---------- 작업물 상세 페이지 (PC: 왼쪽 이미지 / 오른쪽 내용) ---------- */
 .detail {
@@ -179,8 +178,7 @@ section.open .card.extra { display: block; }
 .fact span { display: block; }
 .fact span::before { content: "· "; }
 .tags span { background: var(--ph); color: #5c5c5c; font-size: 11px; font-weight: 500; line-height: 1.5; padding: 4px 8px; border-radius: var(--r1); }   /* 회색 배경, 회색 글씨 11px */
-.sub .ext { display: inline-block; width: 14px; height: 14px; margin-left: 6px; vertical-align: -2px; color: var(--text); }   /* 링크 아이콘 */
-.sub .ext svg { display: block; width: 100%; height: 100%; }
+.lnk { text-decoration: underline; text-underline-offset: 3px; }   /* 표 아래 LINK 줄의 사이트 바로가기 */
 .desc { font-size: 13px; line-height: 1.8; margin: 0; white-space: pre-line; }            /* 설명 13px, 행간 1.8 (사용자 요청) */
 .lb { font-weight: 600; }   /* About 의 Tools / Language / Contact 소제목 */
 .bd { font-weight: 600; }   /* 굵게만 (형광펜 없음) */
@@ -269,7 +267,6 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 .intro .steps span, .intro .steps i { line-height: 18px; }
 .card b { line-height: 22px; }
 .card .s { line-height: 18px; }
-.card em { line-height: 16px; }
 .st { line-height: 20px; }
 .detail h1, .career h1 { line-height: 26px; }
 .fact { line-height: 20px; }

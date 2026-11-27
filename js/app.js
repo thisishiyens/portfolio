@@ -76,7 +76,7 @@ function home() {
     list.forEach((p, k) => {
       h += '<a class="card' + (k >= shown ? " extra" : "") + '" href="#' + esc(p.id) + '"><div class="t">' +
         (p.thumb ? '<img src="' + esc(src(p.thumb)) + '" alt="' + esc(p.title) + '" onerror="this.remove()">' : "<span>IMAGE</span>") +
-        "</div><b>" + esc(p.title) + "</b>" + (p.sub ? '<span class="s">' + esc(p.sub) + "</span>" : "") + "<em>" + esc(p.year) + "</em></a>";
+        "</div><b>" + esc(p.title) + "</b>" + (p.sub ? '<span class="s">' + esc(p.sub) + "</span>" : "") + "</a>";
     });
     h += "</div>" + (shown < list.length ? '<button type="button" class="more">more</button>' : "") + "</section>";
   });
@@ -113,24 +113,22 @@ function careerPage() {
 function detail(p) {
   const same = PROJECTS.filter(x => x.cat === p.cat), i = same.indexOf(p);
   const prev = same[i - 1], next = same[i + 1];
-  /* 링크 아이콘: Heroicons(MIT) link 16 solid. 링크가 있으면 부제목 오른쪽 옆에 붙는다 */
-  const LINK_ICON = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.914 6.025a.75.75 0 0 1 1.06 0 3.5 3.5 0 0 1 0 4.95l-2 2a3.5 3.5 0 0 1-5.396-4.402.75.75 0 0 1 1.251.827 2 2 0 0 0 3.085 2.514l2-2a2 2 0 0 0 0-2.828.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.086 9.975a.75.75 0 0 1-1.06 0 3.5 3.5 0 0 1 0-4.95l2-2a3.5 3.5 0 0 1 5.396 4.402.75.75 0 0 1-1.251-.827 2 2 0 0 0-3.085-2.514l-2 2a2 2 0 0 0 0 2.828.75.75 0 0 1 0 1.06Z" clip-rule="evenodd"/></svg>';
-  const sub = esc(p.sub) + (p.link
-    ? '<a class="ext" href="' + esc(p.link) + '" target="_blank" rel="noopener" aria-label="사이트 바로가기">' + LINK_ICON + "</a>"
-    : "");
+  /* 제목 아래 부제목 자리에는 연도를 보여 준다. 링크가 있으면 Role/Scope/Output 표 맨 아래에 LINK 줄로 나온다 */
+  const sub = esc(String(p.year));
+  const linkRow = p.link ? '<div class="fact"><b>LINK</b><div><a class="lnk" href="' + esc(p.link) + '" target="_blank" rel="noopener">사이트 바로가기 ↗</a></div></div>' : "";
   /* 내용은 sections(줄 단위)로 받는다. 한 줄 = 왼쪽 이미지 / 오른쪽 글. sections 가 없으면 예전 방식(desc + images)을 한 줄로 본다 */
   const secs = (p.sections && p.sections.length) ? p.sections : [{ images: p.images, desc: p.desc }];
   const hasTags = p.tags && p.tags.length;
   const facts = (p.facts && p.facts.length)
     ? '<div class="facts">' + p.facts.map(f => '<div class="fact"><b>' + esc(f[0]) + "</b><div>" +
-        (Array.isArray(f[1]) ? f[1].map(t => "<span>" + esc(t) + "</span>").join("") : esc(f[1])) + "</div></div>").join("") + "</div>" : "";
+        (Array.isArray(f[1]) ? f[1].map(t => "<span>" + esc(t) + "</span>").join("") : esc(f[1])) + "</div></div>").join("") + linkRow + "</div>" : "";
   const head = '<div class="dhead"><a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
     "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
     (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + facts + "</div>";
   /* 맨 아래: 기여도·연도. 부분마다 기여도가 다르면 credits 로 줄마다 보여 준다(이미지 속 숫자와 같게) */
   const metas = (p.credits && p.credits.length)
     ? p.credits.map(c => '<p class="meta">' + esc(c[0]) + " · 기여도 " + esc(c[1]) + " · " + esc(c[2]) + "</p>").join("")
-    : '<p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>";
+    : (p.contrib ? '<p class="meta">기여도 ' + esc(p.contrib) + "</p>" : "");
   const foot = '<div class="foot">' + metas +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div>";
