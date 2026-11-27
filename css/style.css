@@ -322,8 +322,8 @@ footer { line-height: 22px; }
 @media (max-width: 760px) { .intro h1 { line-height: var(--lh-headline-m); } }
 
 /* ---------- 배너가 있는 작업 상세 (content 의 banner / bannerMobile / tone) ----------
-   넓은 화면(1101px~): 화면 폭 배너 위에 글이 올라감 (tone "dark" = 흰 글씨, "light" = 검정 글씨).
-   좁은 화면(1100px 이하)·모바일: 정사각형 배너 아래에 글. */
+   넓은 화면(1367px~): 화면 폭 배너 위에 글이 올라감 (tone "dark" = 흰 글씨, "light" = 검정 글씨).
+   좁은 화면(1366px 이하)·모바일: 정사각형 배너 아래에 글. */
 .detail.has-banner { max-width: none; padding: 0; }
 .detail.has-banner .drow { max-width: 1400px; margin-left: auto; margin-right: auto; padding: 0 var(--pad); }
 .bn + .drow { margin-top: var(--s3); }
@@ -335,7 +335,7 @@ footer { line-height: 22px; }
 .detail:not(.about) .bn .desc { font-size: var(--fs-body-l); line-height: var(--lh-body-l); }
 .bn .facts { margin-bottom: 24px; }
 .bn .fact { padding: var(--s1) 0; }
-@media (min-width: 1101px) {
+@media (min-width: 1367px) {
   .bn { position: relative; width: 100%; aspect-ratio: 2400 / 1050; min-height: 640px; overflow: hidden;  display: flex; align-items: center; }   /* PC: 글 덩어리를 배너 세로 가운데로 */
   .bn img { position: absolute; inset: 0; height: 100%; max-height: none; aspect-ratio: auto; object-position: right center; }
   .bn .info { position: relative; z-index: 1; width: min(460px, 100%); margin-left: calc(max(0px, (100% - 1400px) / 2) + var(--pad)); padding: 48px 0; }

@@ -147,7 +147,7 @@ function detail(p) {
   const sep = !!p.banner && typeof p.bannerDesc === "string";   /* bannerDesc 가 있으면 배너 설명 2줄은 따로 쓰고, 첫 줄(sections[0])은 일반 줄로 나온다 */
   const bnFoot = sep ? secs.length === 0 : secs.length === 1;
   const banner = (k, s) => {
-    const pic = (p.bannerMobile ? '<source media="(max-width:1100px)" srcset="' + esc(src(p.bannerMobile)) + '">' : "") + '<img src="' + esc(src(p.banner)) + '" alt="' + esc(p.title) + '">';
+    const pic = (p.bannerMobile ? '<source media="(max-width:1366px)" srcset="' + esc(src(p.bannerMobile)) + '">' : "") + '<img src="' + esc(src(p.banner)) + '" alt="' + esc(p.title) + '">';
     return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info"><div class="dhead">' + top + '</div>' + facts + '<div class="bdesc">' + secText(s.desc) + "</div>" + (bnFoot ? foot : "") + "</div></div>";
   };
   app.innerHTML = '<article class="detail rows' + (p.banner ? " has-banner" : "") + '">' + (p.banner ? "" : back) + (sep ? banner(0, { desc: p.bannerDesc }) : "") + secs.map((s, k) =>
