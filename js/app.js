@@ -123,7 +123,7 @@ function detail(p) {
   const hasTags = p.tags && p.tags.length;
   const facts = (p.facts && p.facts.length)
     ? '<div class="facts">' + p.facts.map(f => '<div class="fact"><b>' + esc(f[0]) + "</b><div>" +
-        (Array.isArray(f[1]) ? f[1].map(t => "<span>" + esc(t) + "</span>").join("") : esc(f[1]) + (/^role$/i.test(f[0]) && p.contrib ? " (기여도 " + esc(p.contrib) + ")" : "")) + "</div></div>").join("") + "</div>" : "";
+        (Array.isArray(f[1]) ? f[1].map(t => "<span>" + esc(t) + "</span>").join("") : esc(f[1])) + "</div></div>").join("") + "</div>" : "";
   const head = '<div class="dhead"><a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
     "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
     (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + facts + "</div>";
