@@ -45,11 +45,12 @@
 /* ---------- 기본 ---------- */
 html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px) + 50px); }   /* 상단 메뉴 + 섹션 바로가기 높이만큼 비움 */
 *, *::before, *::after { box-sizing: border-box; }
+button, input, textarea, select { font-family: inherit; }   /* 버튼·입력칸도 같은 글꼴(시스템 글꼴 방지) */
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Poppins', 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-family: 'Poppins', 'Pretendard', sans-serif;   /* OFL 글꼴만 사용. 시스템 글꼴은 쓰지 않음 */
   font-weight: 300;
   font-size: 14px;
   line-height: 1.6;
