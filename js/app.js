@@ -143,10 +143,10 @@ function detail(p) {
   const foot = '<div class="foot">' + metas +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div>";
-  /* 배너(banner)가 있는 작업: 첫 줄은 화면 폭 배너. 배너 안 순서 = 제목·연도·태그 → 설명 2줄(첫 줄의 글, 14px) → Role/Scope/Output 표. 넓은 화면은 배너 위에 글이 올라가고(tone: dark=흰 글씨 / light=검정 글씨), 좁은 화면·모바일은 정사각 배너 아래에 글이 나온다 */
+  /* 배너(banner)가 있는 작업: 첫 줄은 화면 폭 배너. 배너 안 순서 = 제목·연도·태그 → Role/Scope/Output 표 → 설명 2줄(첫 줄의 글, 16px, 배너 맨 아래). 넓은 화면은 배너 위에 글이 올라가고(tone: dark=흰 글씨 / light=검정 글씨), 좁은 화면·모바일은 정사각 배너 아래에 글이 나온다 */
   const banner = (k, s) => {
     const pic = (p.bannerMobile ? '<source media="(max-width:1100px)" srcset="' + esc(src(p.bannerMobile)) + '">' : "") + '<img src="' + esc(src(p.banner)) + '" alt="' + esc(p.title) + '">';
-    return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info"><div class="dhead">' + top + '</div><div class="bdesc">' + secText(s.desc) + "</div>" + facts + (secs.length === 1 ? foot : "") + "</div></div>";
+    return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info"><div class="dhead">' + top + '</div>' + facts + '<div class="bdesc">' + secText(s.desc) + "</div>" + (secs.length === 1 ? foot : "") + "</div></div>";
   };
   app.innerHTML = '<article class="detail rows' + (p.banner ? " has-banner" : "") + '">' + (p.banner ? "" : back) + secs.map((s, k) =>
     (k === 0 && p.banner) ? banner(k, s) :

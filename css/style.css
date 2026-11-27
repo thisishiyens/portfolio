@@ -331,9 +331,9 @@ footer { line-height: 22px; }
 .bn .info { margin-bottom: 0; padding: var(--s2) var(--pad) 0; }
 .bn .dhead h1 { margin-top: 0; }
 .bn .dhead .tags { margin-bottom: var(--s2); }
-.bn .bdesc { margin: 0 0 var(--s2); }   /* 배너 안 설명 2줄 (첫 줄의 글, 14px) */
-.detail:not(.about) .bn .desc { font-size: var(--fs-body-m); line-height: 24px; }
-.bn .facts { margin-bottom: 0; }
+.bn .bdesc { margin: 0; }   /* 배너 맨 아래 설명 2줄 (첫 줄의 글, 16px) */
+.detail:not(.about) .bn .desc { font-size: var(--fs-body-l); line-height: var(--lh-body-l); }
+.bn .facts { margin-bottom: var(--s2); }
 @media (min-width: 1101px) {
   .bn { position: relative; width: 100%; aspect-ratio: 2400 / 1050; min-height: 640px; overflow: hidden; }
   .bn img { position: absolute; inset: 0; height: 100%; max-height: none; aspect-ratio: auto; object-position: right center; }
