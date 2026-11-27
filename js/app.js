@@ -178,7 +178,7 @@ function curSlide(row) { const tr = row.querySelector(".track"); return Math.rou
 function secText(t) {
   return String(t || "").split("\n").map(l => l.trim()).filter(Boolean).map(l =>
     l.startsWith("## ") ? '<h3 class="st">' + esc(l.slice(3)) + "</h3>"
-      : '<p class="desc">' + esc(l).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>').replace(/\s*\/\/\s*/g, "<br>") + "</p>").join("");
+      : '<p class="desc">' + esc(l).replace(/\*\*(.+?)\*\*/g, '<b class="bd">$1</b>').replace(/==(.+?)==/g, '<b class="hl">$1</b>').replace(/\s*\/\/\s*/g, "<br>") + "</p>").join("");
 }
 
 /* ---------- 주소(#...)에 따라 화면 전환 ---------- */
