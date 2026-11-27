@@ -72,15 +72,17 @@ function home() {
   SECTIONS.forEach(s => {
     const list = PROJECTS.filter(p => p.cat === s.id);
     h += '<section id="' + s.id + '"><h2>' + esc(s.name) + '</h2><div class="grid">';
-    list.forEach(p => {
-      h += '<a class="card" href="#' + esc(p.id) + '"><div class="t">' +
+    const shown = list.length > 3 && list.length % 3 ? list.length - list.length % 3 : list.length;   /* 줄이 덜 찬 나머지는 more 로 숨김 */
+    list.forEach((p, k) => {
+      h += '<a class="card' + (k >= shown ? " extra" : "") + '" href="#' + esc(p.id) + '"><div class="t">' +
         (p.thumb ? '<img src="' + esc(src(p.thumb)) + '" alt="' + esc(p.title) + '" onerror="this.remove()">' : "<span>IMAGE</span>") +
         "</div><b>" + esc(p.title) + "</b>" + (p.sub ? '<span class="s">' + esc(p.sub) + "</span>" : "") + "<em>" + esc(p.year) + "</em></a>";
     });
-    h += "</div></section>";
+    h += "</div>" + (shown < list.length ? '<button type="button" class="more">more</button>' : "") + "</section>";
   });
   h += "</div>";
   app.innerHTML = h;
+  app.querySelectorAll(".more").forEach(m => m.onclick = () => { m.closest("section").classList.add("open"); m.remove(); });
 }
 
 /* ---------- 이미지 목록 (상세 페이지·About 공통) ---------- */
