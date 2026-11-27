@@ -20,6 +20,10 @@
   --muted: #8a8a8a;    /* 연한 글자 (연도, 부제목) */
   --line: #ececec;     /* 얇은 선 */
   --ph: #f3f3f3;       /* 이미지가 없을 때 회색 박스 */
+  --bar-bg: rgba(255, 255, 255, .9);   /* 상단 메뉴·바로가기 줄·화살표 배경 (흰색 90%) */
+  --tag-text: #5c5c5c; /* 태그 글씨 */
+  --hl: #fff9d6;       /* 형광펜 */
+  --lightbox: rgba(255, 255, 255, .96);   /* 이미지 확대 배경 */
 
   /* 간격 (모든 여백은 이 값만 씁니다. 전부 짝수) */
   --pad: 24px;         /* 화면 좌우 여백 (모바일 16px) */
@@ -60,6 +64,15 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* ---------- 다크 모드 (방문자 기기가 다크 모드일 때 자동. 버튼 없음. 흰색 쪽 값은 위 :root) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111; --text: #f2f2f2; --muted: #8f8f8f; --line: #2a2a2a; --ph: #1d1d1d;
+    --bar-bg: rgba(17, 17, 17, .9); --tag-text: #b5b5b5; --hl: rgba(255, 235, 130, .22); --lightbox: rgba(17, 17, 17, .96);
+    color-scheme: dark;
+  }
+}
+
 /* ---------- 기본 ---------- */
 html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px) + 50px); }   /* 상단 메뉴 + 섹션 바로가기 높이만큼 비움 */
 *, *::before, *::after { box-sizing: border-box; }
@@ -83,7 +96,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- 상단 메뉴 ---------- */
 header {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
-  background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);   /* 배경 불투명도 90% */
+  background: var(--bar-bg); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);   /* 배경 불투명도 90% */
 }
 .bar {
   display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
@@ -117,7 +130,7 @@ header {
 
 /* ---------- 메인 이미지 아래 섹션 바로가기 (12px 회색, 마우스를 올리면 검정) ---------- */
 .hero + .jump { margin-top: 0; }   /* 메인 이미지가 있을 때는 바로 아래에 붙임 */
-.jump { margin-top: var(--s1); position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding: var(--s1) max(var(--pad), calc((100% - 1400px) / 2)); display: flex; justify-content: flex-start; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* PC: 썸네일 시작선에 맞춰 왼쪽 / 모바일: 가운데 */
+.jump { margin-top: var(--s1); position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: var(--bar-bg); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding: var(--s1) max(var(--pad), calc((100% - 1400px) / 2)); display: flex; justify-content: flex-start; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* PC: 썸네일 시작선에 맞춰 왼쪽 / 모바일: 가운데 */
 .jump a { font-size: var(--fs-body-m); color: var(--muted); display: inline-grid; }   /* 섹션 바로가기 13px */
 .jump a::after { content: attr(data-t); font-weight: 600; height: 0; visibility: hidden; overflow: hidden; }   /* 볼드로 바뀌어도 글자 폭이 흔들리지 않게 자리 확보 */
 .jump a:hover { color: var(--text); }
@@ -167,7 +180,7 @@ section.open .card.extra { display: block; }
 .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; overflow-anchor: none; }   /* 옆으로 넘어가는 이미지 줄 */
 .track::-webkit-scrollbar { display: none; }
 .track img { flex: 0 0 100%; width: 100%; height: auto; display: block; scroll-snap-align: start; cursor: zoom-in; }   /* 큰 이미지 (누르면 확대) */
-.arr { position: absolute; top: 50%; width: 32px; height: 32px; margin-top: -16px; padding: 6px; border: 0; border-radius: var(--r1); background: rgba(255,255,255,.9); color: var(--text); cursor: pointer; }   /* 이전·다음 화살표 */
+.arr { position: absolute; top: 50%; width: 32px; height: 32px; margin-top: -16px; padding: 6px; border: 0; border-radius: var(--r1); background: var(--bar-bg); color: var(--text); cursor: pointer; }   /* 이전·다음 화살표 */
 .arr[hidden] { display: none; }
 .arr svg { display: block; width: 100%; height: 100%; }
 .arr.prev { left: 8px; }
@@ -202,14 +215,14 @@ section.open .card.extra { display: block; }
 .fact b { font-weight: 600; letter-spacing: .02em; }
 .fact span { display: block; }
 .fact span::before { content: "· "; }
-.tags span { background: var(--ph); color: #5c5c5c; font-size: var(--fs-label); font-weight: 500; line-height: 1.5; padding: 4px 8px; border-radius: var(--r1); }   /* 회색 배경, 회색 글씨 11px */
+.tags span { background: var(--ph); color: var(--tag-text); font-size: var(--fs-label); font-weight: 500; line-height: 1.5; padding: 4px 8px; border-radius: var(--r1); }   /* 회색 배경, 회색 글씨 11px */
 .lnk { text-decoration: underline; text-underline-offset: 3px; }
 .sub.has-links { margin-bottom: 8px; }   /* About: 이름 아래 Resume·이메일 줄 */
 .sub.links { color: var(--text); }   /* 표 아래 LINK 줄의 사이트 바로가기 */
 .desc { font-size: var(--fs-body-m); line-height: 1.8; margin: 0; white-space: pre-line; }            /* 부수 설명(About·Career)은 13px. 작업 상세 본문은 맨 아래 블록에서 14px */
 .lb { font-weight: 600; }   /* About 의 Tools / Language / Contact 소제목 */
 .bd { font-weight: 600; }   /* 굵게만 (형광펜 없음) */
-.hl { font-weight: 500; background: #fff9d6; padding: 0 2px; }   /* 강조: 굵게 + 연한 노랑 형광펜 */
+.hl { font-weight: 500; background: var(--hl); padding: 0 2px; }   /* 강조: 굵게 + 연한 노랑 형광펜 */
 .meta { font-size: var(--fs-body-s); color: var(--muted); margin: var(--s2) 0 0; }   /* 맨 마지막 줄: 기여도 · 연도 */
 .imgs { display: flex; flex-direction: column; gap: var(--s1); }
 .imgs img { width: 100%; display: block; border-radius: var(--r3); }
@@ -217,7 +230,7 @@ section.open .card.extra { display: block; }
 .detail:not(.about) .imgs { gap: 0; }   /* 작업 상세 이미지 사이 간격 없음(사용자 요청) */
 .detail:not(.about) .imgs img, .detail:not(.about) .imgs .ph { border-radius: 0; }   /* 작업 상세 이미지는 둥글기 없음(사용자 요청). About 사진만 --r3 */
 .detail:not(.about) .imgs img { cursor: zoom-in; }   /* 누르면 확대 */
-.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(255,255,255,.96); display: flex; align-items: center; justify-content: center; padding: var(--pad); cursor: zoom-out; }
+.lightbox { position: fixed; inset: 0; z-index: 100; background: var(--lightbox); display: flex; align-items: center; justify-content: center; padding: var(--pad); cursor: zoom-out; }
 .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 img, video { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }   /* 이미지 저장 막기 */
 /* PC: 마지막 줄은 글 칸 높이를 이미지 높이에 맞추고, 이전/다음 위의 선을 이미지 끝선에 맞춘다. 기여도·연도는 선 바로 위(선↔화살표 간격만큼 띄움)에 둔다(사용자 요청). 모바일은 그대로 */
