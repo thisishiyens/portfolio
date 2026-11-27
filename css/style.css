@@ -40,16 +40,16 @@
   --fs-headline: 32px;   /* 소개 제목 (모바일 --fs-headline-m) */
   --fs-headline-m: 24px;
   --fs-title: 18px;      /* 썸네일 제목, 상세 제목 */
-  --fs-body-l: 14px;     /* 작업 상세 설명 본문·소제목, 썸네일 서브 설명, 소개 문단 */
-  --fs-body-m: 13px;     /* About·Career 설명(부수 설명), ROLE 표, 메뉴, 바로가기, more */
+  --fs-body-l: 16px;     /* 작업 상세 설명 본문·소제목 */
+  --fs-body-m: 14px;     /* ROLE 표, About·Career 설명, 썸네일 서브 설명, 소개 문단, 메뉴, 바로가기, more */
   --fs-body-s: 12px;     /* 연도, 기여도, 알약 버튼, 이전/다음 */
-  --fs-label: 11px;      /* 태그 (예외 크기) */
+  --fs-label: 12px;      /* 태그 */
   /* 줄 높이 (글자 크기와 한 쌍. 소수점 없는 px) */
   --lh-headline: 40px;
   --lh-headline-m: 36px;
   --lh-title: 26px;
-  --lh-body-l: 26px;
-  --lh-body-m: 20px;
+  --lh-body-l: 28px;
+  --lh-body-m: 22px;
   --lh-body-s: 20px;
   --lh-label: 16px;
 
@@ -83,7 +83,7 @@ body {
   color: var(--text);
   font-family: 'Poppins', 'Pretendard', sans-serif;   /* OFL 글꼴만 사용. 시스템 글꼴은 쓰지 않음 */
   font-weight: 300;
-  font-size: var(--fs-body-l);
+  font-size: var(--fs-body-m);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -112,7 +112,7 @@ header {
 /* ---------- 맨 위 소개 영역 (흰 배경 + 검은 글씨. 제목은 크게, 나머지 13~14px) ---------- */
 .intro { color: var(--text); background: var(--bg); padding: var(--s3) max(var(--pad), calc((100% - 1400px) / 2)); }
 .intro h1 { margin: 0 0 var(--s2); font-size: var(--fs-headline); font-weight: 600; line-height: 1.3; letter-spacing: -.01em; word-break: keep-all; }
-.intro p { margin: 0 0 var(--s1); font-size: var(--fs-body-l); line-height: 1.8; color: var(--text); word-break: keep-all; }
+.intro p { margin: 0 0 var(--s1); font-size: var(--fs-body-m); line-height: 1.8; color: var(--text); word-break: keep-all; }
 .intro .steps { margin-top: var(--s2); display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
 .intro .steps span { border: 1px solid var(--text); border-radius: 999px; padding: 6px 12px; font-size: var(--fs-body-s); font-weight: 600; }
 .intro .steps i { font-style: normal; font-size: var(--fs-body-s); color: var(--muted); padding: 0 2px; }
@@ -131,7 +131,7 @@ header {
 /* ---------- 메인 이미지 아래 섹션 바로가기 (12px 회색, 마우스를 올리면 검정) ---------- */
 .hero + .jump { margin-top: 0; }   /* 메인 이미지가 있을 때는 바로 아래에 붙임 */
 .jump { margin-top: var(--s1); position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 8; background: var(--bar-bg); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding: var(--s1) max(var(--pad), calc((100% - 1400px) / 2)); display: flex; justify-content: flex-start; gap: var(--s2); }   /* 스크롤해도 상단 메뉴 아래에 고정 */   /* PC: 썸네일 시작선에 맞춰 왼쪽 / 모바일: 가운데 */
-.jump a { font-size: var(--fs-body-m); color: var(--muted); display: inline-grid; }   /* 섹션 바로가기 13px */
+.jump a { font-size: var(--fs-body-m); color: var(--muted); display: inline-grid; }   /* 섹션 바로가기 14px */
 .jump a::after { content: attr(data-t); font-weight: 600; height: 0; visibility: hidden; overflow: hidden; }   /* 볼드로 바뀌어도 글자 폭이 흔들리지 않게 자리 확보 */
 .jump a:hover { color: var(--text); }
 .jump a.on { color: var(--text); font-weight: 600; }   /* 누른 섹션명은 검정 + 볼드 유지 */
@@ -167,7 +167,7 @@ section.open .card.extra { display: block; }
 }
 @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
 .card b  { display: block; margin-top: var(--s1); font-weight: 600; font-size: var(--fs-title); line-height: 1.2; text-align: left; }   /* 1줄: 프로젝트명 18px */
-.card .s { display: block; margin-top: var(--t1); font-weight: 300; font-size: var(--fs-body-l); line-height: 1.2; color: var(--text); text-align: left; }      /* 2줄: 서브 설명 14px #111 */
+.card .s { display: block; margin-top: var(--t1); font-weight: 300; font-size: var(--fs-body-m); line-height: 1.2; color: var(--text); text-align: left; }      /* 2줄: 서브 설명 14px #111 */
 
 /* ---------- 작업물 상세 페이지 (PC: 왼쪽 이미지 / 오른쪽 내용) ---------- */
 .detail {
@@ -186,7 +186,7 @@ section.open .card.extra { display: block; }
 .arr.prev { left: 8px; }
 .arr.next { right: 8px; }
 .drow + .drow { margin-top: var(--s3); }
-.st { font-size: var(--fs-body-l); font-weight: 700; line-height: 1.5; margin: var(--s2) 0 8px; }   /* 소제목: 14px 굵게 (본문과 같은 크기) */
+.st { font-size: var(--fs-body-l); font-weight: 700; line-height: 1.5; margin: var(--s2) 0 8px; }   /* 소제목: 16px 굵게 (본문과 같은 크기) */
 .info > .st:first-child { margin-top: 0; }
 .info .desc + .desc { margin-top: var(--s1); }
 .detail.about { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }   /* About(PC): 글 60% 왼쪽 / 사진 40% 오른쪽 */
@@ -215,11 +215,11 @@ section.open .card.extra { display: block; }
 .fact b { font-weight: 600; letter-spacing: .02em; }
 .fact span { display: block; }
 .fact span::before { content: "· "; }
-.tags span { background: var(--ph); color: var(--tag-text); font-size: var(--fs-label); font-weight: 500; line-height: 1.5; padding: 4px 8px; border-radius: var(--r1); }   /* 회색 배경, 회색 글씨 11px */
+.tags span { background: var(--ph); color: var(--tag-text); font-size: var(--fs-label); font-weight: 500; line-height: 1.5; padding: 4px 8px; border-radius: var(--r1); }   /* 회색 배경, 회색 글씨 12px */
 .lnk { text-decoration: underline; text-underline-offset: 3px; }
 .sub.has-links { margin-bottom: 8px; }   /* About: 이름 아래 Resume·이메일 줄 */
 .sub.links { color: var(--text); }   /* 표 아래 LINK 줄의 사이트 바로가기 */
-.desc { font-size: var(--fs-body-m); line-height: 1.8; margin: 0; white-space: pre-line; }            /* 부수 설명(About·Career)은 13px. 작업 상세 본문은 맨 아래 블록에서 14px */
+.desc { font-size: var(--fs-body-m); line-height: 1.8; margin: 0; white-space: pre-line; }            /* 부수 설명(About·Career)은 14px. 작업 상세 본문은 맨 아래 블록에서 16px */
 .lb { font-weight: 600; }   /* About 의 Tools / Language / Contact 소제목 */
 .bd { font-weight: 600; }   /* 굵게만 (형광펜 없음) */
 .hl { font-weight: 500; background: var(--hl); padding: 0 2px; }   /* 강조: 굵게 + 연한 노랑 형광펜 */
@@ -253,7 +253,7 @@ img, video { -webkit-user-drag: none; user-select: none; -webkit-user-select: no
 .career .rows { border-bottom: 1px solid var(--line); }   /* Career 목록 전용 (작업 상세 페이지에는 선 없음) */
 .row { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--s2); padding: var(--s2) 0; border-top: 1px solid var(--line); }
 .row .when { font-size: var(--fs-body-s); color: var(--muted); }
-.row b { display: block; font-size: var(--fs-body-l); font-weight: 600; margin-bottom: 4px; }
+.row b { display: block; font-size: var(--fs-body-m); font-weight: 600; margin-bottom: 4px; }
 
 /* ---------- 하단 ---------- */
 footer {
@@ -305,7 +305,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 .sub, .meta, .nav2 { line-height: var(--lh-body-s); }
 .logo { line-height: 28px; }                      /* 예외 */
 .intro h1 { line-height: var(--lh-headline); }
-.intro p { line-height: var(--lh-body-l); }
+.intro p { line-height: 26px; }                   /* 예외: 소개 문단 */
 .intro .steps span, .intro .steps i { line-height: 18px; }   /* 예외: 알약 버튼 */
 .card b { line-height: 22px; }                    /* 예외: 썸네일 제목은 촘촘하게 */
 .card .s { line-height: 18px; }                   /* 예외: 썸네일 서브 설명은 촘촘하게 */
@@ -314,7 +314,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 .fact { line-height: var(--lh-body-m); }
 .tags span { line-height: var(--lh-label); }
 .desc { line-height: 24px; }                      /* 예외: About·Career 설명 */
-.detail:not(.about) .desc { font-size: var(--fs-body-l); line-height: var(--lh-body-l); }   /* 작업 상세 설명 본문만 14px, About·Career 는 13px */
+.detail:not(.about) .desc { font-size: var(--fs-body-l); line-height: var(--lh-body-l); }   /* 작업 상세 설명 본문만 16px, About·Career 는 14px */
 .back { line-height: 18px; display: inline-block; }
 footer { line-height: 22px; }
 .row b { line-height: 22px; }
