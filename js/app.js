@@ -131,16 +131,15 @@ function detail(p) {
   document.querySelectorAll(".drow .track").forEach(syncSlide);
 }
 
-/* 한 줄의 이미지 영역: 왼쪽 작은 미리보기(.thumbs) + 가운데 큰 이미지(.view). 큰 이미지는 옆으로 넘길 수 있다(밀기·화살표·미리보기 누르기) */
+/* 한 줄의 이미지 영역: 큰 이미지(.view). 옆으로 넘길 수 있다(밀기·화살표) */
 const ARR_L = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/></svg>';
 const ARR_R = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>';
 function gallery(list, alt) {
   const files = (list || []).filter(Boolean);
-  const thumbs = files.map((f, i) => '<button type="button" class="th' + (i === 0 ? " on" : "") + '" data-i="' + i + '" aria-label="이미지 ' + (i + 1) + '"><img src="' + esc(src(f)) + '" alt=""></button>').join("");
   const slides = files.map(f => '<img src="' + esc(src(f)) + '" alt="' + esc(alt) + '">').join("");
   const arrows = files.length > 1
     ? '<button type="button" class="arr prev" aria-label="이전 이미지">' + ARR_L + '</button><button type="button" class="arr next" aria-label="다음 이미지">' + ARR_R + "</button>" : "";
-  return '<div class="thumbs">' + thumbs + '</div><div class="view"><div class="track">' + slides + "</div>" + arrows + "</div>";
+  return '<div class="view"><div class="track">' + slides + "</div>" + arrows + "</div>";
 }
 function goSlide(row, i) {
   const tr = row.querySelector(".track"), n = tr.children.length;
@@ -176,14 +175,12 @@ function route() {
 document.addEventListener("contextmenu", e => { if (e.target.closest("img, video, .ph, .lightbox")) e.preventDefault(); });
 document.addEventListener("dragstart", e => { if (e.target.closest("img, video")) e.preventDefault(); });
 
-/* ---------- 상세 이미지: 옆으로 넘기기(밀기·화살표·미리보기), 큰 이미지를 누르면 확대(다시 누르거나 Esc 로 닫기, 좌우 방향키로 넘기기) ---------- */
+/* ---------- 상세 이미지: 옆으로 넘기기(밀기·화살표), 큰 이미지를 누르면 확대(다시 누르거나 Esc 로 닫기, 좌우 방향키로 넘기기) ---------- */
 let lb = null, lbList = [], lbIdx = 0;
 function lbClose() { if (lb) { lb.remove(); lb = null; document.body.style.overflow = ""; } }
 function lbShow(i) { lbIdx = (i + lbList.length) % lbList.length; lb.querySelector("img").src = lbList[lbIdx]; }
 document.addEventListener("click", e => {
   if (lb) { lbClose(); return; }
-  const th = e.target.closest(".drow .th");
-  if (th) { goSlide(th.closest(".drow"), +th.dataset.i); return; }
   const ar = e.target.closest(".drow .arr");
   if (ar) { const row = ar.closest(".drow"); goSlide(row, curSlide(row) + (ar.classList.contains("next") ? 1 : -1)); return; }
   const im = e.target.closest(".drow .track img");
@@ -194,10 +191,9 @@ document.addEventListener("click", e => {
   document.body.appendChild(lb); document.body.style.overflow = "hidden";
   lbShow(imgs.indexOf(im));
 });
-/* 밀어서 넘기면 왼쪽 미리보기도 같이 바뀐다 + 처음/끝에서는 화살표를 숨긴다 */
+/* 처음/끝에서는 화살표를 숨긴다 */
 function syncSlide(tr) {
   const row = tr.closest(".drow"), i = Math.round(tr.scrollLeft / (tr.clientWidth || 1)), n = tr.children.length;
-  row.querySelectorAll(".th").forEach((x, k) => x.classList.toggle("on", k === i));
   const pv = row.querySelector(".arr.prev"), nx = row.querySelector(".arr.next");
   if (pv) pv.hidden = i <= 0; if (nx) nx.hidden = i >= n - 1;
 }

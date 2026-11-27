@@ -132,11 +132,7 @@ h2 { display: none; max-width: 1400px; margin: 0 auto var(--s2); font-size: 20px
   display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--s3); align-items: start;
 }
 .detail.rows { display: block; }   /* 작업 상세: 줄(.drow)마다 왼쪽 이미지 / 오른쪽 글 */
-.drow { display: grid; grid-template-columns: 96px minmax(0, 3fr) minmax(0, 2fr); gap: var(--s2); align-items: start; }   /* 왼쪽 작은 미리보기 / 가운데 큰 이미지 / 오른쪽 글 */
-.thumbs { display: flex; flex-direction: column; gap: 8px; }
-.th { display: block; padding: 0; border: 0; background: var(--ph); cursor: pointer; opacity: .4; outline: 1px solid transparent; outline-offset: 0; }
-.th.on { opacity: 1; outline-color: var(--text); }   /* 지금 보고 있는 이미지만 진하게 + 얇은 검정 테두리 */
-.th img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.drow { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--s2); align-items: start; }   /* 왼쪽 큰 이미지 / 오른쪽 글 */
 .view { position: relative; background: var(--ph); }
 .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }   /* 옆으로 넘어가는 이미지 줄 */
 .track::-webkit-scrollbar { display: none; }
@@ -231,9 +227,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
   .career { padding: var(--s2) var(--pad) 0; }
   .row { grid-template-columns: 1fr; gap: 8px; }
   .info { position: static; order: -1; }
-  .drow { grid-template-columns: 1fr; gap: var(--s1); }   /* 모바일: 줄마다 글 → 큰 이미지 → 작은 미리보기(가로) 순서 */
-  .thumbs { order: 1; flex-direction: row; }
-  .thumbs .th { width: 72px; flex: 0 0 auto; }
+  .drow { grid-template-columns: 1fr; gap: var(--s1); }   /* 모바일: 줄마다 글 → 큰 이미지 순서 */
   .info { margin-bottom: var(--s1); }
   .drow + .drow { margin-top: var(--s2); }
 }
