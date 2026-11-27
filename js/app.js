@@ -116,13 +116,44 @@ function detail(p) {
   const sub = esc(p.sub) + (p.link
     ? '<a class="ext" href="' + esc(p.link) + '" target="_blank" rel="noopener" aria-label="사이트 바로가기">' + LINK_ICON + "</a>"
     : "");
-  const imgs = imgsHtml(p.images, p.title);
-  app.innerHTML = '<article class="detail"><div class="imgs">' + imgs + '</div><div class="info">' +
-    '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
-    "<h1>" + esc(p.title) + '</h1><p class="sub' + (p.tags && p.tags.length ? " has-tags" : "") + '">' + sub + "</p>" +
-    (p.tags && p.tags.length ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + '<p class="desc">' + esc(p.desc).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>') + '</p><p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>" +
+  /* 내용은 sections(줄 단위)로 받는다. 한 줄 = 왼쪽 이미지 / 오른쪽 글. sections 가 없으면 예전 방식(desc + images)을 한 줄로 본다 */
+  const secs = (p.sections && p.sections.length) ? p.sections : [{ images: p.images, desc: p.desc }];
+  const hasTags = p.tags && p.tags.length;
+  const head = '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
+    "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
+    (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "");
+  const foot = '<p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>" +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
-    (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div></article>";
+    (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div>";
+  app.innerHTML = '<article class="detail rows">' + secs.map((s, k) =>
+    '<div class="drow">' + gallery(s.images, p.title) + '<div class="info">' +
+    (k === 0 ? head : "") + secText(s.desc) + (k === secs.length - 1 ? foot : "") + "</div></div>").join("") + "</article>";
+  document.querySelectorAll(".drow .track").forEach(syncSlide);
+}
+
+/* 한 줄의 이미지 영역: 왼쪽 작은 미리보기(.thumbs) + 가운데 큰 이미지(.view). 큰 이미지는 옆으로 넘길 수 있다(밀기·화살표·미리보기 누르기) */
+const ARR_L = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/></svg>';
+const ARR_R = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>';
+function gallery(list, alt) {
+  const files = (list || []).filter(Boolean);
+  const thumbs = files.map((f, i) => '<button type="button" class="th' + (i === 0 ? " on" : "") + '" data-i="' + i + '" aria-label="이미지 ' + (i + 1) + '"><img src="' + esc(src(f)) + '" alt=""></button>').join("");
+  const slides = files.map(f => '<img src="' + esc(src(f)) + '" alt="' + esc(alt) + '">').join("");
+  const arrows = files.length > 1
+    ? '<button type="button" class="arr prev" aria-label="이전 이미지">' + ARR_L + '</button><button type="button" class="arr next" aria-label="다음 이미지">' + ARR_R + "</button>" : "";
+  return '<div class="thumbs">' + thumbs + '</div><div class="view"><div class="track">' + slides + "</div>" + arrows + "</div>";
+}
+function goSlide(row, i) {
+  const tr = row.querySelector(".track"), n = tr.children.length;
+  i = Math.max(0, Math.min(n - 1, i));
+  tr.scrollTo({ left: i * tr.clientWidth, behavior: "smooth" });
+}
+function curSlide(row) { const tr = row.querySelector(".track"); return Math.round(tr.scrollLeft / (tr.clientWidth || 1)); }
+
+/* 글 한 덩어리 -> 문단(<p>)과 소제목(<h3>). 줄 맨 앞의 ## 는 소제목, **굵게** 는 형광펜 */
+function secText(t) {
+  return String(t || "").split("\n").map(l => l.trim()).filter(Boolean).map(l =>
+    l.startsWith("## ") ? '<h3 class="st">' + esc(l.slice(3)) + "</h3>"
+      : '<p class="desc">' + esc(l).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>') + "</p>").join("");
 }
 
 /* ---------- 주소(#...)에 따라 화면 전환 ---------- */
@@ -145,19 +176,32 @@ function route() {
 document.addEventListener("contextmenu", e => { if (e.target.closest("img, video, .ph, .lightbox")) e.preventDefault(); });
 document.addEventListener("dragstart", e => { if (e.target.closest("img, video")) e.preventDefault(); });
 
-/* ---------- 상세 이미지 확대 보기: 이미지를 누르면 크게, 다시 누르거나 Esc 로 닫기, 좌우 방향키로 넘기기 ---------- */
+/* ---------- 상세 이미지: 옆으로 넘기기(밀기·화살표·미리보기), 큰 이미지를 누르면 확대(다시 누르거나 Esc 로 닫기, 좌우 방향키로 넘기기) ---------- */
 let lb = null, lbList = [], lbIdx = 0;
 function lbClose() { if (lb) { lb.remove(); lb = null; document.body.style.overflow = ""; } }
-function lbShow(i) { lbIdx = (i + lbList.length) % lbList.length; lb.querySelector("img").src = lbList[lbIdx].src; }
+function lbShow(i) { lbIdx = (i + lbList.length) % lbList.length; lb.querySelector("img").src = lbList[lbIdx]; }
 document.addEventListener("click", e => {
   if (lb) { lbClose(); return; }
-  const im = e.target.closest(".detail:not(.about) .imgs img");
+  const th = e.target.closest(".drow .th");
+  if (th) { goSlide(th.closest(".drow"), +th.dataset.i); return; }
+  const ar = e.target.closest(".drow .arr");
+  if (ar) { const row = ar.closest(".drow"); goSlide(row, curSlide(row) + (ar.classList.contains("next") ? 1 : -1)); return; }
+  const im = e.target.closest(".drow .track img");
   if (!im) return;
-  lbList = Array.from(document.querySelectorAll(".detail:not(.about) .imgs img"));
+  const row = im.closest(".drow"), imgs = Array.from(row.querySelectorAll(".track img"));
+  lbList = imgs.map(x => x.getAttribute("src"));
   lb = document.createElement("div"); lb.className = "lightbox"; lb.innerHTML = "<img alt=''>";
   document.body.appendChild(lb); document.body.style.overflow = "hidden";
-  lbShow(lbList.indexOf(im));
+  lbShow(imgs.indexOf(im));
 });
+/* 밀어서 넘기면 왼쪽 미리보기도 같이 바뀐다 + 처음/끝에서는 화살표를 숨긴다 */
+function syncSlide(tr) {
+  const row = tr.closest(".drow"), i = Math.round(tr.scrollLeft / (tr.clientWidth || 1)), n = tr.children.length;
+  row.querySelectorAll(".th").forEach((x, k) => x.classList.toggle("on", k === i));
+  const pv = row.querySelector(".arr.prev"), nx = row.querySelector(".arr.next");
+  if (pv) pv.hidden = i <= 0; if (nx) nx.hidden = i >= n - 1;
+}
+document.addEventListener("scroll", e => { if (e.target.classList && e.target.classList.contains("track")) syncSlide(e.target); }, true);
 document.addEventListener("keydown", e => {
   if (!lb) return;
   if (e.key === "Escape") lbClose();
