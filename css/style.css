@@ -140,7 +140,7 @@ section.open .card.extra { display: block; }
 .detail.rows { display: block; }   /* 작업 상세: 줄(.drow)마다 왼쪽 이미지 / 오른쪽 글 */
 .drow { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--s2); align-items: start; }   /* 왼쪽 큰 이미지 / 오른쪽 글 */
 .view { position: relative; background: var(--ph); }
-.track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }   /* 옆으로 넘어가는 이미지 줄 */
+.track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; overflow-anchor: none; }   /* 옆으로 넘어가는 이미지 줄 */
 .track::-webkit-scrollbar { display: none; }
 .track img { flex: 0 0 100%; width: 100%; height: auto; display: block; scroll-snap-align: start; cursor: zoom-in; }   /* 큰 이미지 (누르면 확대) */
 .arr { position: absolute; top: 50%; width: 32px; height: 32px; margin-top: -16px; padding: 6px; border: 0; border-radius: var(--r1); background: rgba(255,255,255,.9); color: var(--text); cursor: pointer; }   /* 이전·다음 화살표 */
@@ -166,7 +166,7 @@ section.open .card.extra { display: block; }
 }
 .detail.solo { grid-template-columns: minmax(0, 1fr); }   /* About: 사진 없이 글만 */
 .detail.solo .info { position: static; max-width: 640px; }
-.info { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 88px); }
+.info { position: static; }   /* 글은 이미지 옆 제자리에 고정(스크롤을 따라 내려오지 않음, 사용자 요청) */
 .back { font-size: 12px; color: var(--muted); }
 .detail h1 { font-size: 18px; font-weight: 600; line-height: 1.4; margin: var(--s1) 0 4px; }   /* 제목 18px */
 .sub { font-size: 13px; color: var(--muted); margin: 0 0 var(--s2); }                          /* 부제목 12px */

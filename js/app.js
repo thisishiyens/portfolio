@@ -134,6 +134,23 @@ function detail(p) {
     '<div class="drow">' + gallery(s.images, p.title) + '<div class="info">' +
     (k === 0 ? head : "") + secText(s.desc) + (k === secs.length - 1 ? foot : "") + "</div></div>").join("") + "</article>";
   document.querySelectorAll(".drow .track").forEach(syncSlide);
+  keepFirstSlide();
+}
+
+/* 이미지가 2장 이상인 줄은 항상 첫 번째 이미지부터 보이게 한다(모바일에서 이미지가 늦게 뜰 때 2번째로 밀리는 것 방지).
+   사용자가 직접 밀거나 화살표를 누른 뒤에는 건드리지 않는다. */
+function keepFirstSlide() {
+  document.querySelectorAll(".drow .track").forEach(tr => {
+    if (tr.children.length < 2) return;
+    let touched = false;
+    ["touchstart", "pointerdown", "wheel", "keydown"].forEach(ev => tr.addEventListener(ev, () => { touched = true; }, { passive: true }));
+    const reset = () => { if (!touched && tr.scrollLeft !== 0) tr.scrollLeft = 0; };
+    reset();
+    tr.querySelectorAll("img").forEach(im => { if (!im.complete) im.addEventListener("load", reset, { once: true }); });
+    window.addEventListener("load", reset, { once: true });
+    setTimeout(reset, 300); setTimeout(reset, 1000);
+    const row = tr.closest(".drow"); row && row.querySelectorAll(".arr").forEach(a => a.addEventListener("click", () => { touched = true; }));
+  });
 }
 
 /* 한 줄의 이미지 영역: 큰 이미지(.view). 옆으로 넘길 수 있다(밀기·화살표) */
