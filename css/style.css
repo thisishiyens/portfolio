@@ -22,14 +22,14 @@
   --ph: #f3f3f3;       /* 이미지가 없을 때 회색 박스 */
 
   /* 간격 (모든 여백은 이 값만 씁니다. 전부 짝수) */
-  --pad: 32px;         /* 화면 좌우 여백 (모바일 16px) */
+  --pad: 24px;         /* 화면 좌우 여백 (모바일 16px) */
   --s1: 16px;          /* 작은 간격 */
   --s2: 32px;          /* 중간 간격 */
   --s3: 64px;          /* 큰 간격 */
   --t1: 6px;           /* 썸네일 글: 제목↔서브 간격 */
   --t2: 10px;           /* 서브↔연도 간격 */
   --gx: 24px;          /* 썸네일 가로 간격 (3열 사이) */
-  --gy: 48px;          /* 썸네일 세로 간격 (줄과 줄 사이, 섹션 사이) → 가로:세로 = 1:2 */
+  --gy: 64px;          /* 썸네일 세로 간격 (줄과 줄 사이, 섹션 사이) */
 
   /* 모서리 둥글기 (이 세 가지만 씁니다) */
   --r1: 4px;           /* 버튼 */
@@ -260,3 +260,21 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 }
 
 /* 아주 좁은 폰(380px 이하): 소개 글 12px 로 줄여 줄바꿈이 어긋나지 않게 */
+
+/* ---------- 줄 높이는 소수점이 없는 px 로 (사용자 요청: 화면에서 크기가 딱 떨어지게) ---------- */
+.bar nav a, .jump a, .sub, .meta, .nav2 { line-height: 20px; }
+.logo { line-height: 28px; }
+.intro h1 { line-height: 40px; }
+.intro p { line-height: 26px; }
+.intro .steps span, .intro .steps i { line-height: 18px; }
+.card b { line-height: 22px; }
+.card .s { line-height: 18px; }
+.card em { line-height: 16px; }
+.st { line-height: 20px; }
+.detail h1, .career h1 { line-height: 26px; }
+.fact { line-height: 20px; }
+.tags span { line-height: 16px; }
+.desc { line-height: 24px; }
+.back { line-height: 18px; display: inline-block; }
+footer { line-height: 22px; }
+@media (max-width: 760px) { .intro h1 { line-height: 36px; } }
