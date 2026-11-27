@@ -21,5 +21,8 @@ const ABOUT = {
     "__Contact__\nlyn_biz@naver.com",
 
   /* 사진: 왼쪽에 나옵니다. (비우면 글만 나옵니다.) 예) images: ["about/1.jpg", "about/2.jpg"] 처럼 적으면 왼쪽에 사진이 나옵니다. */
+  /* 이력서 PDF: 파일을 이 폴더(Portfolio)에 넣고 파일 이름을 적으면 이름 아래에 "Resume (PDF) ↗" 가 나옵니다. 비우면 이메일만 나옵니다. */
+  resume: "resume.pdf",
+
   images: ["about/1.jpg"]
 };

@@ -96,8 +96,13 @@ function imgsHtml(list, alt) {
 /* ---------- About 페이지 (상세 페이지와 같은 구조: 왼쪽 이미지 / 오른쪽 내용) ---------- */
 function aboutPage() {
   const hasImg = A.images && A.images.length;   /* 사진이 없으면 글만 한 줄로 */
+  /* 이름 아래 한 줄: Resume(PDF) 링크(about.js 의 resume 가 있을 때) + 이메일 */
+  const lk = [];
+  if (A.resume) lk.push('<a class="lnk" href="' + esc(A.resume) + '" target="_blank" rel="noopener">Resume (PDF) ↗</a>');
+  if (S.email) lk.push('<a class="lnk" href="mailto:' + esc(S.email) + '">' + esc(S.email) + "</a>");
+  const links = lk.length ? '<p class="sub links">' + lk.join(" &nbsp;·&nbsp; ") + "</p>" : "";
   app.innerHTML = '<article class="detail' + (hasImg ? " about" : " solo") + '">' + (hasImg ? '<div class="imgs">' + imgsHtml(A.images, A.title) + "</div>" : "") + '<div class="info">' +
-    "<h1>" + esc(A.title) + '</h1><p class="sub">' + esc(A.sub) + '</p><p class="desc">' + esc(A.desc).replace(/__(.+?)__/g, '<b class="lb">$1</b>') + "</p></div></article>";
+    "<h1>" + esc(A.title) + '</h1><p class="sub has-links">' + esc(A.sub) + "</p>" + links + '<p class="desc">' + esc(A.desc).replace(/__(.+?)__/g, '<b class="lb">$1</b>') + "</p></div></article>";
 }
 
 /* ---------- Career 페이지 (선으로 나눈 줄글 흐름) ---------- */
