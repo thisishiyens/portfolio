@@ -36,8 +36,8 @@
   --fs-headline: 32px;   /* 소개 제목 (모바일 --fs-headline-m) */
   --fs-headline-m: 24px;
   --fs-title: 18px;      /* 썸네일 제목, 상세 제목 */
-  --fs-body-l: 14px;     /* 썸네일 서브 설명, 소개 문단 */
-  --fs-body-m: 13px;     /* 상세 설명, 소제목, ROLE 표, 메뉴, 바로가기, more */
+  --fs-body-l: 14px;     /* 작업 상세 설명 본문, 썸네일 서브 설명, 소개 문단 */
+  --fs-body-m: 13px;     /* About·Career 설명(부수 설명), 소제목, ROLE 표, 메뉴, 바로가기, more */
   --fs-body-s: 12px;     /* 연도, 기여도, 알약 버튼, 이전/다음 */
   --fs-label: 11px;      /* 태그 (예외 크기) */
 
@@ -191,7 +191,7 @@ section.open .card.extra { display: block; }
 .lnk { text-decoration: underline; text-underline-offset: 3px; }
 .sub.has-links { margin-bottom: 8px; }   /* About: 이름 아래 Resume·이메일 줄 */
 .sub.links { color: var(--text); }   /* 표 아래 LINK 줄의 사이트 바로가기 */
-.desc { font-size: var(--fs-body-m); line-height: 1.8; margin: 0; white-space: pre-line; }            /* 설명 13px, 행간 1.8 (사용자 요청) */
+.desc { font-size: var(--fs-body-m); line-height: 1.8; margin: 0; white-space: pre-line; }            /* 부수 설명(About·Career)은 13px. 작업 상세 본문은 맨 아래 블록에서 14px */
 .lb { font-weight: 600; }   /* About 의 Tools / Language / Contact 소제목 */
 .bd { font-weight: 600; }   /* 굵게만 (형광펜 없음) */
 .hl { font-weight: 500; background: #fff9d6; padding: 0 2px; }   /* 강조: 굵게 + 연한 노랑 형광펜 */
@@ -284,6 +284,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 .fact { line-height: 20px; }
 .tags span { line-height: 16px; }
 .desc { line-height: 24px; }
+.detail:not(.about) .desc { font-size: var(--fs-body-l); line-height: 26px; }   /* 작업 상세 설명 본문만 14px, About·Career 는 13px */
 .back { line-height: 18px; display: inline-block; }
 footer { line-height: 22px; }
 .row b { line-height: 22px; }
