@@ -226,8 +226,13 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
   .detail.about .info h1 { margin-top: 0; }
   .career { padding: var(--s2) var(--pad) 0; }
   .row { grid-template-columns: 1fr; gap: 8px; }
-  .info { position: static; order: -1; }
-  .drow { grid-template-columns: 1fr; gap: var(--s1); }   /* 모바일: 줄마다 글 → 큰 이미지 순서 */
+  .info { position: static; }
+  /* 모바일: 맨 위 줄은 제목·부제목·태그(.dhead)를 이미지 위에 두고, 그 아래 이미지 → 글 */
+  .drow:first-child { gap: 0; }
+  .drow:first-child .info { display: contents; }
+  .dhead { order: -1; margin-bottom: var(--s1); }
+  .drow:first-child .view { margin-bottom: var(--s1); }
+  .drow { grid-template-columns: 1fr; gap: var(--s1); }   /* 모바일: 줄마다 큰 이미지 → 글 순서 */
   .info { margin-bottom: var(--s1); }
   .drow + .drow { margin-top: var(--s2); }
 }

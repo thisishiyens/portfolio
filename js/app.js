@@ -119,9 +119,9 @@ function detail(p) {
   /* 내용은 sections(줄 단위)로 받는다. 한 줄 = 왼쪽 이미지 / 오른쪽 글. sections 가 없으면 예전 방식(desc + images)을 한 줄로 본다 */
   const secs = (p.sections && p.sections.length) ? p.sections : [{ images: p.images, desc: p.desc }];
   const hasTags = p.tags && p.tags.length;
-  const head = '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
+  const head = '<div class="dhead"><a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
     "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
-    (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "");
+    (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + "</div>";
   const foot = '<p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>" +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div>";
