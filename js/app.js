@@ -127,9 +127,13 @@ function detail(p) {
   const head = '<div class="dhead"><a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
     "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
     (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + facts + "</div>";
-  const foot = '<p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>" +
+  /* 맨 아래: 기여도·연도. 부분마다 기여도가 다르면 credits 로 줄마다 보여 준다(이미지 속 숫자와 같게) */
+  const metas = (p.credits && p.credits.length)
+    ? p.credits.map(c => '<p class="meta">' + esc(c[0]) + " · 기여도 " + esc(c[1]) + " · " + esc(c[2]) + "</p>").join("")
+    : '<p class="meta">' + (p.contrib ? "기여도 " + esc(p.contrib) + " · " : "") + esc(p.year) + "</p>";
+  const foot = '<div class="foot">' + metas +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
-    (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div>";
+    (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div>";
   app.innerHTML = '<article class="detail rows">' + secs.map((s, k) =>
     '<div class="drow">' + gallery(s.images, p.title) + '<div class="info">' +
     (k === 0 ? head : "") + secText(s.desc) + (k === secs.length - 1 ? foot : "") + "</div></div>").join("") + "</article>";

@@ -194,6 +194,14 @@ section.open .card.extra { display: block; }
 .lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(255,255,255,.96); display: flex; align-items: center; justify-content: center; padding: var(--pad); cursor: zoom-out; }
 .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 img, video { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }   /* 이미지 저장 막기 */
+/* PC: 마지막 줄은 글 칸 높이를 이미지 높이에 맞추고, 이전/다음 위의 선을 이미지 끝선에 맞춘다. 기여도·연도는 선 바로 위(선↔화살표 간격만큼 띄움)에 둔다(사용자 요청). 모바일은 그대로 */
+@media (min-width: 761px) {
+  .drow:last-child { align-items: stretch; }
+  .drow:last-child .info { display: flex; flex-direction: column; position: relative; }
+  .drow:last-child .foot { margin-top: auto; padding-top: var(--s2); padding-bottom: var(--s1); }
+  .drow:last-child .nav2 { position: absolute; left: 0; right: 0; top: 100%; margin-top: 0; }
+}
+.meta + .meta { margin-top: 4px; }
 .nav2 {
   display: flex; justify-content: space-between; gap: 16px;
   margin-top: var(--s2); padding-top: var(--s1); border-top: 1px solid var(--line); font-size: 12px;
