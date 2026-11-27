@@ -336,7 +336,7 @@ footer { line-height: 22px; }
 .bn .facts { margin-bottom: 24px; }
 .bn .fact { padding: var(--s1) 0; }
 @media (min-width: 1101px) {
-  .bn { position: relative; width: 100%; aspect-ratio: 2400 / 1050; min-height: 640px; overflow: hidden; }
+  .bn { position: relative; width: 100%; aspect-ratio: 2400 / 1050; min-height: 640px; overflow: hidden;  display: flex; align-items: center; }   /* PC: 글 덩어리를 배너 세로 가운데로 */
   .bn img { position: absolute; inset: 0; height: 100%; max-height: none; aspect-ratio: auto; object-position: right center; }
   .bn .info { position: relative; z-index: 1; width: min(460px, 100%); margin-left: calc(max(0px, (100% - 1400px) / 2) + var(--pad)); padding: 48px 0; }
   .bn.dark { --text: #fff; --muted: rgba(255, 255, 255, .7); --line: rgba(255, 255, 255, .28); --ph: rgba(255, 255, 255, .2); --tag-text: #fff; --hl: transparent; --hl-w: 600; }
