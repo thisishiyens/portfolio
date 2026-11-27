@@ -204,8 +204,8 @@ section.open .card.extra { display: block; }
 .detail.solo { grid-template-columns: minmax(0, 1fr); }   /* About: 사진 없이 글만 */
 .detail.solo .info { position: static; max-width: 640px; }
 .info { position: static; }   /* 글은 이미지 옆 제자리에 고정(스크롤을 따라 내려오지 않음, 사용자 요청) */
-.back { font-size: var(--fs-body-s); color: var(--muted); }
-.detail h1 { font-size: var(--fs-title); font-weight: 600; line-height: 1.4; margin: var(--s1) 0 4px; }   /* 제목 18px */
+.back { font-size: var(--fs-body-s); color: var(--muted); }   /* 상세 맨 위 ← 섹션 이름: 이미지 왼쪽 끝선에 맞춤 */
+.detail h1 { font-size: var(--fs-title); font-weight: 600; line-height: 1.4; margin: 0 0 4px; }   /* 제목 18px */
 .sub { font-size: var(--fs-body-s); color: var(--muted); margin: 0 0 var(--s2); }                          /* 부제목 12px */
 .sub.has-tags { margin-bottom: var(--s1); }   /* 태그가 있으면 부제목과 태그 사이를 좁게 */
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--s2); }   /* 부제목 아래 태그 */
@@ -288,10 +288,10 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
   .row { grid-template-columns: 1fr; gap: 8px; }
   .info { position: static; }
   /* 모바일: 맨 위 줄은 제목·부제목·태그(.dhead)를 이미지 위에 두고, 그 아래 이미지 → 글 */
-  .drow:first-child { gap: 0; }
-  .drow:first-child .info { display: contents; }
+  .drow:first-of-type { gap: 0; }
+  .drow:first-of-type .info { display: contents; }
   .dhead { order: -1; margin-bottom: var(--s1); }
-  .drow:first-child .view { margin-bottom: var(--s1); }
+  .drow:first-of-type .view { margin-bottom: var(--s1); }
   .drow { grid-template-columns: 1fr; gap: var(--s1); }   /* 모바일: 줄마다 큰 이미지 → 글 순서 */
   .info { margin-bottom: var(--s1); }
   .drow + .drow { margin-top: var(--s2); }
@@ -315,7 +315,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 .tags span { line-height: var(--lh-label); }
 .desc { line-height: 24px; }                      /* 예외: About·Career 설명 */
 .detail:not(.about) .desc { font-size: var(--fs-body-l); line-height: var(--lh-body-l); }   /* 작업 상세 설명 본문만 16px, About·Career 는 14px */
-.back { line-height: 18px; display: inline-block; }
+.back { line-height: 18px; display: inline-block; margin-bottom: var(--s1); }
 footer { line-height: 22px; }
 .row b { line-height: 22px; }
 @media (max-width: 760px) { .intro h1 { line-height: var(--lh-headline-m); } }

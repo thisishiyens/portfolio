@@ -132,7 +132,8 @@ function detail(p) {
   const facts = (p.facts && p.facts.length)
     ? '<div class="facts">' + p.facts.map(f => '<div class="fact"><b>' + esc(f[0]) + "</b><div>" +
         (Array.isArray(f[1]) ? f[1].map(t => "<span>" + esc(t) + "</span>").join("") : esc(f[1])) + "</div></div>").join("") + linkRow + "</div>" : "";
-  const head = '<div class="dhead"><a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>" +
+  const back = '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>";   /* 이미지 왼쪽 끝선에 맞춰 맨 위에 둔다 */
+  const head = '<div class="dhead">' +
     "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
     (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + facts + "</div>";
   /* 맨 아래: 기여도·연도. 부분마다 기여도가 다르면 credits 로 줄마다 보여 준다(이미지 속 숫자와 같게) */
@@ -142,7 +143,7 @@ function detail(p) {
   const foot = '<div class="foot">' + metas +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div>";
-  app.innerHTML = '<article class="detail rows">' + secs.map((s, k) =>
+  app.innerHTML = '<article class="detail rows">' + back + secs.map((s, k) =>
     '<div class="drow">' + gallery(s.images, p.title) + '<div class="info">' +
     (k === 0 ? head : "") + secText(s.desc) + (k === secs.length - 1 ? foot : "") + "</div></div>").join("") + "</article>";
   document.querySelectorAll(".drow .track").forEach(syncSlide);
