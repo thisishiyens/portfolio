@@ -20,7 +20,8 @@
   --muted: #8a8a8a;    /* 연한 글자 (연도, 부제목) */
   --line: #ececec;     /* 얇은 선 */
   --ph: #f3f3f3;       /* 이미지가 없을 때 회색 박스 */
-  --bar-bg: rgba(255, 255, 255, .9);   /* 상단 메뉴·바로가기 줄·화살표 배경 (흰색 90%) */
+  --bar-bg: rgba(255, 255, 255, .9);   /* 상단 메뉴·바로가기 줄 배경 (흰색 90%) */
+  --arr-bg: rgba(255, 255, 255, .5);   /* 상세 이미지 이전·다음 화살표 동그라미 배경 (흰색 50%) */
   --tag-text: #5c5c5c; /* 태그 글씨 */
   --hl: #fff9d6;       /* 형광펜 */
   --hl-w: 500;         /* 강조(==) 글씨 굵기. 어두운 배너 위에서만 형광펜 없이 굵게(600) */
@@ -69,7 +70,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #111; --text: #f2f2f2; --muted: #8f8f8f; --line: #2a2a2a; --ph: #1d1d1d;
-    --bar-bg: rgba(17, 17, 17, .9); --tag-text: #b5b5b5; --hl: rgba(255, 235, 130, .22); --lightbox: rgba(17, 17, 17, .96);
+    --bar-bg: rgba(17, 17, 17, .9); --arr-bg: rgba(17, 17, 17, .5); --tag-text: #b5b5b5; --hl: rgba(255, 235, 130, .22); --lightbox: rgba(17, 17, 17, .96);
     color-scheme: dark;
   }
 }
@@ -181,11 +182,11 @@ section.open .card.extra { display: block; }
 .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; overflow-anchor: none; }   /* 옆으로 넘어가는 이미지 줄 */
 .track::-webkit-scrollbar { display: none; }
 .track img { flex: 0 0 100%; width: 100%; height: auto; display: block; scroll-snap-align: start; cursor: zoom-in; }   /* 큰 이미지 (누르면 확대) */
-.arr { position: absolute; top: 50%; width: 32px; height: 32px; margin-top: -16px; padding: 6px; border: 0; border-radius: var(--r1); background: var(--bar-bg); color: var(--text); cursor: pointer; }   /* 이전·다음 화살표 */
+.arr { position: absolute; top: 50%; width: 40px; height: 40px; margin-top: -20px; padding: 8px; border: 0; border-radius: 50%; background: var(--arr-bg); color: var(--text); cursor: pointer; }   /* 이전·다음 화살표 */
 .arr[hidden] { display: none; }
 .arr svg { display: block; width: 100%; height: 100%; }
-.arr.prev { left: 8px; }
-.arr.next { right: 8px; }
+.arr.prev { left: 16px; }
+.arr.next { right: 16px; }
 .drow + .drow { margin-top: var(--s3); }
 .st { font-size: var(--fs-body-l); font-weight: 700; line-height: 1.5; margin: var(--s2) 0 8px; }   /* 소제목: 16px 굵게 (본문과 같은 크기) */
 .info > .st:first-child { margin-top: 0; }
