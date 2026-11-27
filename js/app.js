@@ -8,10 +8,13 @@ const IMG_DIR = "images/";
 
 /* 섹션(Branding / Product / Campaign)과 내용 파일을 연결합니다.
    content 파일 하나에 오타가 있어도 다른 섹션은 정상적으로 보이도록 안전장치를 걸어 두었습니다. */
+/* 메뉴·섹션·하단의 짧은 글자 이름 (content/site.js 의 labels 로 바꿀 수 있습니다. 없으면 아래 기본값) */
+const LB = Object.assign({ works: "Works", about: "About me", branding: "Branding", product: "Product", campaign: "Campaign", contact: "CONTACT", tab: "PORTFOLIO" },
+  (typeof SITE !== "undefined" && SITE.labels) || {});
 const SECTIONS = [
-  { id: "branding", name: "Branding", items: typeof BRANDING !== "undefined" ? BRANDING : [] },
-  { id: "product",  name: "Product",  items: typeof PRODUCT  !== "undefined" ? PRODUCT  : [] },
-  { id: "campaign", name: "Campaign", items: typeof CAMPAIGN !== "undefined" ? CAMPAIGN : [] }
+  { id: "branding", name: LB.branding, items: typeof BRANDING !== "undefined" ? BRANDING : [] },
+  { id: "product",  name: LB.product,  items: typeof PRODUCT  !== "undefined" ? PRODUCT  : [] },
+  { id: "campaign", name: LB.campaign, items: typeof CAMPAIGN !== "undefined" ? CAMPAIGN : [] }
 ];
 const PROJECTS = SECTIONS.flatMap(s => s.items.map(p => ({ ...p, cat: s.id })));
 
@@ -27,7 +30,9 @@ const src = f => IMG_DIR + f;
 let view = null;
 
 /* ---------- 상단·하단 글자 채우기 ---------- */
-document.title = S.name + " · PORTFOLIO";
+document.title = S.name + " · " + LB.tab;
+{ const nw = document.querySelector('nav a[data-n="work"]'), na = document.querySelector('nav a[data-n="about"]'); if (nw) nw.textContent = LB.works; if (na) na.textContent = LB.about; }
+document.getElementById("flabel").textContent = LB.contact;
 document.getElementById("logo").textContent = S.name;
 document.getElementById("fname").textContent = S.name;
 document.getElementById("frole").innerHTML = esc(S.role) + "<br>" + esc(S.tagline);

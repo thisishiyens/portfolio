@@ -15,6 +15,17 @@ const SITE = {
   /* 연락처 */
   email: "lyn_biz@naver.com",
 
+  /* 메뉴·섹션·하단의 짧은 글자 이름 (관리자 편집기에서도 바꿀 수 있습니다) */
+  labels: {
+    works: "Works",          // 위 메뉴
+    about: "About me",       // 위 메뉴
+    branding: "Branding",    // 섹션 이름 (바로가기, 상세 페이지의 ← 뒤로가기)
+    product: "Product",
+    campaign: "Campaign",
+    contact: "CONTACT",      // 맨 아래 연락처 제목
+    tab: "PORTFOLIO"         // 브라우저 탭 제목: 이름 · 이 글자
+  },
+
   /* ---------- 맨 위 검정 소개 영역 ----------
      title 을 비우면("") 이 영역은 나오지 않습니다.
      paragraphs 는 문단 단위(문단 사이가 한 칸 띄워짐), steps 는 아래 둥근 버튼들입니다. */

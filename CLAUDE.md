@@ -123,6 +123,7 @@ _backup/          예전 버전 (공개하지 않음)
   화면 캡처·개발자 도구까지는 막을 수 없다. 사용자에게 "완전 차단은 불가능"이라고 이미 설명했다.
 
 ## 9. 글 편집기 (사용자 요청, 로컬 전용)
-- `관리자/편집기.html` : 크롬에서 열어 Portfolio 폴더를 연결하면 content/branding·product·campaign.js 의 글·칩·기여도·facts·이미지를 화면에서 고치고 저장한다. 저장 전 파일은 `_backup/편집기-저장전/` 에 백업.
-- `관리자/` 는 `.gitignore` 로 제외돼 있어 **절대 GitHub 에 올리지 않는다.** 저장 형식은 content 파일 형식과 같아야 한다(필드를 바꾸면 편집기도 같이 고친다).
+- `admin/editor.html` : 크롬에서 열어 Portfolio 폴더를 연결하면 content/branding·product·campaign.js 의 글·칩·기여도·facts·이미지를 화면에서 고치고 저장한다. 저장 전 파일은 `_backup/편집기-저장전/` 에 백업.
+- 편집기는 작업 9개 + About + Career(content/career.js) + 사이트 기본(content/site.js: 이름·직함·이메일·소개 글·단계·hero·labels) + 링크 공유 미리보기(index.html 의 og:title/og:description, images/og.jpg)를 고친다. 메뉴·섹션·CONTACT·탭 글자는 site.js 의 `labels` 로 바꾼다(js/app.js 의 LB).
+- `admin/` 는 `.gitignore` 로 제외돼 있어 **절대 GitHub 에 올리지 않는다.** 저장 형식은 content 파일 형식과 같아야 한다(필드를 바꾸면 편집기도 같이 고친다).
 - 사용자가 저장한 뒤 "갱신"이라고 하면 §5 절차로 올린다. 편집기에서 바꾼 글은 사용자가 직접 고친 내용이므로 덮어쓰지 않는다.
