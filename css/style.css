@@ -36,10 +36,18 @@
   --fs-headline: 32px;   /* 소개 제목 (모바일 --fs-headline-m) */
   --fs-headline-m: 24px;
   --fs-title: 18px;      /* 썸네일 제목, 상세 제목 */
-  --fs-body-l: 14px;     /* 작업 상세 설명 본문, 썸네일 서브 설명, 소개 문단 */
-  --fs-body-m: 13px;     /* About·Career 설명(부수 설명), 소제목, ROLE 표, 메뉴, 바로가기, more */
+  --fs-body-l: 14px;     /* 작업 상세 설명 본문·소제목, 썸네일 서브 설명, 소개 문단 */
+  --fs-body-m: 13px;     /* About·Career 설명(부수 설명), ROLE 표, 메뉴, 바로가기, more */
   --fs-body-s: 12px;     /* 연도, 기여도, 알약 버튼, 이전/다음 */
   --fs-label: 11px;      /* 태그 (예외 크기) */
+  /* 줄 높이 (글자 크기와 한 쌍. 소수점 없는 px) */
+  --lh-headline: 40px;
+  --lh-headline-m: 36px;
+  --lh-title: 26px;
+  --lh-body-l: 26px;
+  --lh-body-m: 20px;
+  --lh-body-s: 20px;
+  --lh-label: 16px;
 
   /* 모서리 둥글기 (이 세 가지만 씁니다) */
   --r1: 4px;           /* 버튼 */
@@ -158,7 +166,7 @@ section.open .card.extra { display: block; }
 .arr.prev { left: 8px; }
 .arr.next { right: 8px; }
 .drow + .drow { margin-top: var(--s3); }
-.st { font-size: var(--fs-body-m); font-weight: 700; line-height: 1.5; margin: var(--s2) 0 8px; }   /* 소제목: 13px 굵게 */
+.st { font-size: var(--fs-body-l); font-weight: 700; line-height: 1.5; margin: var(--s2) 0 8px; }   /* 소제목: 14px 굵게 (본문과 같은 크기) */
 .info > .st:first-child { margin-top: 0; }
 .info .desc + .desc { margin-top: var(--s1); }
 .detail.about { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }   /* About(PC): 글 60% 왼쪽 / 사진 40% 오른쪽 */
@@ -271,21 +279,23 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 
 /* 아주 좁은 폰(380px 이하): 소개 글 12px 로 줄여 줄바꿈이 어긋나지 않게 */
 
-/* ---------- 줄 높이는 소수점이 없는 px 로 (사용자 요청: 화면에서 크기가 딱 떨어지게) ---------- */
-.bar nav a, .jump a, .sub, .meta, .nav2 { line-height: 20px; }
-.logo { line-height: 28px; }
-.intro h1 { line-height: 40px; }
-.intro p { line-height: 26px; }
-.intro .steps span, .intro .steps i { line-height: 18px; }
-.card b { line-height: 22px; }
-.card .s { line-height: 18px; }
-.st { line-height: 20px; }
-.detail h1, .career h1 { line-height: 26px; }
-.fact { line-height: 20px; }
-.tags span { line-height: 16px; }
-.desc { line-height: 24px; }
-.detail:not(.about) .desc { font-size: var(--fs-body-l); line-height: 26px; }   /* 작업 상세 설명 본문만 14px, About·Career 는 13px */
+/* ---------- 줄 높이는 소수점이 없는 px 로 (사용자 요청: 화면에서 크기가 딱 떨어지게) ----------
+   기본값은 위 :root 의 --lh-* (글자 크기와 한 쌍). 아래 px 는 카드·버튼처럼 촘촘하게 쓰는 예외입니다. */
+.bar nav a, .jump a { line-height: var(--lh-body-m); }
+.sub, .meta, .nav2 { line-height: var(--lh-body-s); }
+.logo { line-height: 28px; }                      /* 예외 */
+.intro h1 { line-height: var(--lh-headline); }
+.intro p { line-height: var(--lh-body-l); }
+.intro .steps span, .intro .steps i { line-height: 18px; }   /* 예외: 알약 버튼 */
+.card b { line-height: 22px; }                    /* 예외: 썸네일 제목은 촘촘하게 */
+.card .s { line-height: 18px; }                   /* 예외: 썸네일 서브 설명은 촘촘하게 */
+.st { line-height: var(--lh-body-l); }
+.detail h1, .career h1 { line-height: var(--lh-title); }
+.fact { line-height: var(--lh-body-m); }
+.tags span { line-height: var(--lh-label); }
+.desc { line-height: 24px; }                      /* 예외: About·Career 설명 */
+.detail:not(.about) .desc { font-size: var(--fs-body-l); line-height: var(--lh-body-l); }   /* 작업 상세 설명 본문만 14px, About·Career 는 13px */
 .back { line-height: 18px; display: inline-block; }
 footer { line-height: 22px; }
 .row b { line-height: 22px; }
-@media (max-width: 760px) { .intro h1 { line-height: 36px; } }
+@media (max-width: 760px) { .intro h1 { line-height: var(--lh-headline-m); } }

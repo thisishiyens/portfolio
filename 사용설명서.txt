@@ -117,6 +117,8 @@ content/site.js 의 intro 에서 큰 제목(title), 문단(paragraphs), 둥근 �
      이력서(PDF)는 Portfolio 폴더 맨 바깥에 resume.pdf 로 두면 About 이름 아래에 "Resume (PDF) ↗" 로 나옵니다. (파일 이름을 바꾸면 content/about.js 의 resume 도 같이 바꾸기)
      ※ 이력서 PDF 는 공개되므로 전화번호·주소·금액은 가린 파일만 넣으세요.
      기여도가 부분마다 다를 때만 「부분별 기여도·연도」 칸에 한 줄에 하나씩 적습니다.
+     왼쪽 아래 「SITE → 글자 크기」에서는 사이트 전체 글자 크기(Headline·Title·Body·Label)를 숫자로 바꿉니다.
+     작업 글쓰기 화면 맨 위의 「글쓰기 규칙」을 펼치면 규칙을 볼 수 있고, 문단이 130자를 넘으면 빨간 안내가 나옵니다.
      왼쪽 아래 「SITE」에서는 사이트 전체 글자를 고칩니다:
        · 사이트 기본·소개·메뉴 이름 = 이름·직함·이메일, 맨 위 소개 글과 단계 버튼, 메인 이미지·영상 파일 이름,
          위 메뉴(Works/About me)·섹션 이름(Branding 등)·맨 아래 CONTACT·브라우저 탭 글자
