@@ -11,6 +11,8 @@
   Portfolio/
   ├─ index.html          뼈대 ........................ 건드리지 않아도 됩니다
   ├─ css/style.css       디자인(색·글자 크기) ........ 건드리지 않아도 됩니다
+                         (글자 크기는 css 맨 위 --fs-* 한 곳에 모여 있습니다.
+                          Headline 32 / Title 18 / Body Large 14 / Body Medium 13 / Body Small 12 / Label 11)
   ├─ js/app.js           동작 ........................ 건드리지 마세요
   ├─ fonts/              글꼴 파일 ................... 건드리지 마세요
   │
