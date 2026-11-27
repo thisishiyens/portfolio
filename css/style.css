@@ -288,10 +288,10 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
   .row { grid-template-columns: 1fr; gap: 8px; }
   .info { position: static; }
   /* 모바일: 맨 위 줄은 제목·부제목·태그(.dhead)를 이미지 위에 두고, 그 아래 이미지 → 글 */
-  .drow:first-of-type { gap: 0; }
-  .drow:first-of-type .info { display: contents; }
+  .drow.d1 { gap: 0; }
+  .drow.d1 .info { display: contents; }
   .dhead { order: -1; margin-bottom: var(--s1); }
-  .drow:first-of-type .view { margin-bottom: var(--s1); }
+  .drow.d1 .view { margin-bottom: var(--s1); }
   .drow { grid-template-columns: 1fr; gap: var(--s1); }   /* 모바일: 줄마다 큰 이미지 → 글 순서 */
   .info { margin-bottom: var(--s1); }
   .drow + .drow { margin-top: var(--s2); }
@@ -319,3 +319,21 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 footer { line-height: 22px; }
 .row b { line-height: 22px; }
 @media (max-width: 760px) { .intro h1 { line-height: var(--lh-headline-m); } }
+
+/* ---------- 배너가 있는 작업 상세 (content 의 banner / bannerMobile / tone) ----------
+   넓은 화면(1101px~): 화면 폭 배너 위에 글이 올라감 (tone "dark" = 흰 글씨, "light" = 검정 글씨).
+   좁은 화면(1100px 이하)·모바일: 정사각형 배너 아래에 글. */
+.detail.has-banner { max-width: none; padding: 0; }
+.detail.has-banner .drow { max-width: 1400px; margin-left: auto; margin-right: auto; padding: 0 var(--pad); }
+.bn + .drow { margin-top: var(--s3); }
+.bn img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; max-height: 560px; object-fit: cover; }
+.bn .info { margin-bottom: 0; padding: var(--s2) var(--pad) 0; }
+.bn .dhead h1 { margin-top: 0; }
+@media (min-width: 1101px) {
+  .bn { position: relative; width: 100%; aspect-ratio: 2400 / 1050; min-height: 640px; overflow: hidden; }
+  .bn img { position: absolute; inset: 0; height: 100%; max-height: none; aspect-ratio: auto; object-position: right center; }
+  .bn .info { position: relative; z-index: 1; width: min(460px, 100%); margin-left: calc(max(0px, (100% - 1400px) / 2) + var(--pad)); padding: var(--s3) 0; }
+  .bn.dark { --text: #fff; --muted: rgba(255, 255, 255, .7); --line: rgba(255, 255, 255, .28); --ph: rgba(255, 255, 255, .2); --tag-text: #fff; --hl: rgba(255, 235, 130, .3); }
+  .bn.light { --text: #111; --muted: #8a8a8a; --line: rgba(0, 0, 0, .14); --ph: rgba(0, 0, 0, .06); --tag-text: #5c5c5c; --hl: #fff9d6; }
+  .bn .dhead, .bn .desc { color: var(--text); }
+}

@@ -46,6 +46,9 @@ const PRODUCT = [
       ["OUTPUT", ["모바일 사용 환경에 맞춘 서비스 재구성으로 사용 흐름과 화면 일관성 강화", "컴포넌트·아이콘 기반 디자인 시스템 구축으로 화면 일관성과 확장성 확보"]]
     ],
     thumb:  "product-01/thumb.jpg",
+    banner: "product-01/banner.jpg",         // 상세 맨 위 화면 폭 배너 (PC 2400×1050). 없으면 예전 모양
+    bannerMobile: "product-01/banner-m.jpg", // 모바일 배너 (1200×1200). 비우면 위 이미지를 씀
+    tone:   "dark",                          // 배너가 어두우면 "dark"(흰 글씨), 밝으면 "light"(검정 글씨)
     sections: [
       {
         images: ["product-01/1.jpg"],

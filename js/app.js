@@ -143,9 +143,15 @@ function detail(p) {
   const foot = '<div class="foot">' + metas +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div>";
-  app.innerHTML = '<article class="detail rows">' + back + secs.map((s, k) =>
-    '<div class="drow">' + gallery(s.images, p.title) + '<div class="info">' +
-    (k === 0 ? head : "") + secText(s.desc) + (k === secs.length - 1 ? foot : "") + "</div></div>").join("") + "</article>";
+  /* 배너(banner)가 있는 작업: 첫 줄은 화면 폭 배너. 넓은 화면은 배너 위에 글이 올라가고(tone: dark=흰 글씨 / light=검정 글씨), 좁은 화면·모바일은 정사각 배너 아래에 글이 나온다 */
+  const banner = (k, s) => {
+    const pic = (p.bannerMobile ? '<source media="(max-width:1100px)" srcset="' + esc(src(p.bannerMobile)) + '">' : "") + '<img src="' + esc(src(p.banner)) + '" alt="' + esc(p.title) + '">';
+    return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info">' + head + secText(s.desc) + (secs.length === 1 ? foot : "") + "</div></div>";
+  };
+  app.innerHTML = '<article class="detail rows' + (p.banner ? " has-banner" : "") + '">' + (p.banner ? "" : back) + secs.map((s, k) =>
+    (k === 0 && p.banner) ? banner(k, s) :
+    '<div class="drow' + (k === 0 ? " d1" : "") + '">' + gallery(s.images, p.title) + '<div class="info">' +
+    ((k === 0 && !p.banner) ? head : "") + secText(s.desc) + (k === secs.length - 1 ? foot : "") + "</div></div>").join("") + "</article>";
   document.querySelectorAll(".drow .track").forEach(syncSlide);
   keepFirstSlide();
 }
