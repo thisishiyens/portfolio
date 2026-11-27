@@ -133,9 +133,9 @@ function detail(p) {
     ? '<div class="facts">' + p.facts.map(f => '<div class="fact"><b>' + esc(f[0]) + "</b><div>" +
         (Array.isArray(f[1]) ? f[1].map(t => "<span>" + esc(t) + "</span>").join("") : esc(f[1])) + "</div></div>").join("") + linkRow + "</div>" : "";
   const back = '<a class="back" href="#' + p.cat + '">← ' + esc(SECTIONS.find(s => s.id === p.cat).name) + "</a>";   /* 이미지 왼쪽 끝선에 맞춰 맨 위에 둔다 */
-  const head = '<div class="dhead">' +
-    "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
-    (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "") + facts + "</div>";
+  const top = "<h1>" + esc(p.title) + '</h1><p class="sub' + (hasTags ? " has-tags" : "") + '">' + sub + "</p>" +
+    (hasTags ? '<div class="tags">' + p.tags.map(t => "<span>" + esc(t) + "</span>").join("") + "</div>" : "");   /* 제목 + 연도 + 태그 */
+  const head = '<div class="dhead">' + top + facts + "</div>";
   /* 맨 아래: 기여도·연도. 부분마다 기여도가 다르면 credits 로 줄마다 보여 준다(이미지 속 숫자와 같게) */
   const metas = (p.credits && p.credits.length)
     ? p.credits.map(c => '<p class="meta">' + esc(c[0]) + " · 기여도 " + esc(c[1]) + " · " + esc(c[2]) + "</p>").join("")
@@ -143,10 +143,10 @@ function detail(p) {
   const foot = '<div class="foot">' + metas +
     '<div class="nav2"><span>' + (prev ? '<a href="#' + esc(prev.id) + '">← ' + esc(prev.title) + "</a>" : "") + "</span><span>" +
     (next ? '<a href="#' + esc(next.id) + '">' + esc(next.title) + " →</a>" : "") + "</span></div></div>";
-  /* 배너(banner)가 있는 작업: 첫 줄은 화면 폭 배너. 넓은 화면은 배너 위에 글이 올라가고(tone: dark=흰 글씨 / light=검정 글씨), 좁은 화면·모바일은 정사각 배너 아래에 글이 나온다 */
+  /* 배너(banner)가 있는 작업: 첫 줄은 화면 폭 배너. 배너 안 순서 = 제목·연도·태그 → 설명 2줄(첫 줄의 글, 14px) → Role/Scope/Output 표. 넓은 화면은 배너 위에 글이 올라가고(tone: dark=흰 글씨 / light=검정 글씨), 좁은 화면·모바일은 정사각 배너 아래에 글이 나온다 */
   const banner = (k, s) => {
     const pic = (p.bannerMobile ? '<source media="(max-width:1100px)" srcset="' + esc(src(p.bannerMobile)) + '">' : "") + '<img src="' + esc(src(p.banner)) + '" alt="' + esc(p.title) + '">';
-    return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info">' + head + secText(s.desc) + (secs.length === 1 ? foot : "") + "</div></div>";
+    return '<div class="bn ' + (p.tone === "light" ? "light" : "dark") + '"><picture>' + pic + '</picture><div class="info"><div class="dhead">' + top + '</div><div class="bdesc">' + secText(s.desc) + "</div>" + facts + (secs.length === 1 ? foot : "") + "</div></div>";
   };
   app.innerHTML = '<article class="detail rows' + (p.banner ? " has-banner" : "") + '">' + (p.banner ? "" : back) + secs.map((s, k) =>
     (k === 0 && p.banner) ? banner(k, s) :
