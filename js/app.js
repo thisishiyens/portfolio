@@ -33,7 +33,10 @@ let view = null;
 document.title = LB.tab;
 { const nw = document.querySelector('nav a[data-n="work"]'), na = document.querySelector('nav a[data-n="about"]'); if (nw) nw.textContent = LB.works; if (na) na.textContent = LB.about; }
 document.getElementById("flabel").textContent = LB.contact;
-document.getElementById("logo").textContent = S.name;
+{ const lg = document.getElementById("logo"), i = S.name.indexOf(".");
+  if (i < 0) lg.textContent = S.name;
+  else { const d = document.createElement("span"); d.className = "dot"; d.textContent = ".";
+    lg.append(S.name.slice(0, i), d, S.name.slice(i + 1)); } }  /* 로고의 첫 점(.)만 홀로그램 색 */
 document.getElementById("fname").textContent = S.name;
 document.getElementById("frole").innerHTML = esc(S.role) + "<br>" + esc(S.tagline);
 document.getElementById("fcopy").textContent = "© " + new Date().getFullYear() + " " + S.name;

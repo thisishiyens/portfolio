@@ -410,6 +410,7 @@ footer b { display: block; color: var(--text); font-weight: var(--fw-b); letter-
 .bar nav a, .jump a { line-height: var(--lh-body-m); }
 .sub, .meta, .nav2 { line-height: var(--lh-body-s); }
 .logo { line-height: var(--lh-logo); }                      /* 예외 */
+.logo .dot { background: linear-gradient(90deg, #6fe3f5, #b79bff, #ff9fd0); -webkit-background-clip: text; background-clip: text; color: transparent; }  /* 로고 점: 영상 속 홀로그램 색 */
 .intro h1 { line-height: var(--lh-headline); }
 .intro p { font-size: var(--fs-body-l); line-height: var(--lh-body-l); letter-spacing: var(--ls-body); word-break: keep-all; font-weight: var(--fw); color: var(--desc); }   /* 메인 소개 문단: 상세 본문과 같은 모양 (사용자 요청 2026-11-28) */
 .intro .steps span, .intro .steps i { line-height: var(--lh-pill); }   /* 예외: 알약 버튼 */
