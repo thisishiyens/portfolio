@@ -56,7 +56,7 @@
   --lh-body-s: 20px;
   --lh-label: 16px;
   /* 줄 높이·간격 규칙 (어드민 "글자 크기" 페이지 아래쪽 표에서 바꿀 수 있어요. 짝수 px) */
-  --lh-fact: 26px;      /* ROLE·SCOPE·OUTPUT 표 줄 높이 */
+  --lh-fact: 24px;      /* ROLE·SCOPE·OUTPUT 표 줄 높이 */
   --lh-st: 28px;        /* 상세 소제목 줄 높이 */
   --st-gap: 12px;       /* 상세 소제목 ↔ 본문 간격 */
   --lh-card: 22px;      /* 썸네일 제목 줄 높이 */

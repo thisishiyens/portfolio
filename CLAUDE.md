@@ -40,7 +40,7 @@ _backup/          예전 버전 (공개하지 않음)
   | Headline `--fs-headline` | 32px (모바일 `--fs-headline-m` 24px) | 소개 제목 |
   | Title `--fs-title` | 18px | 로고, 썸네일 제목, 상세 제목 |
   | Body Large `--fs-body-l` | 16px | **작업 상세 설명 본문**(행간 26px, 자간 -0.02em, 단어 단위 줄바꿈, Regular 400, 색 #272727, 강조 Semibold 600. 사용자 요청 2026-11-28). 소제목은 Title 18px Semibold, 검정(--text), 행간 28px, 본문과 간격 12px. 메인 소개 문단(`.intro p`)도 같은 모양 |
-  | Body Medium `--fs-body-m` | 14px | ROLE·SCOPE·OUTPUT 표(행간 26px, 사용자 요청 2026-11-28 `--lh-fact`), About·Career 글(행간 24px), 메뉴·바로가기(22px), 썸네일 서브 설명, Career 항목 제목(숨김), 메뉴, 바로가기, more |
+  | Body Medium `--fs-body-m` | 14px | ROLE·SCOPE·OUTPUT 표(행간 24px, 어드민에서 변경 2026-11-28 `--lh-fact`), About·Career 글(행간 24px), 메뉴·바로가기(22px), 썸네일 서브 설명, Career 항목 제목(숨김), 메뉴, 바로가기, more |
   | Body Small `--fs-body-s` | 12px | 연도(상세 제목 아래), 기여도, 알약 버튼, 이전/다음 |
   | Label `--fs-label` | 12px | 태그 |
   (사용자 요청 2026-11-27: 구글 Material 기준에 맞춰 본문 16 / 부수 14 / 작게 12 로 올렸다. 썸네일 서브·소개 문단은 14px 그대로 유지하려고 Body Medium 에 둠.)
