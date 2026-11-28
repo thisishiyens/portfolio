@@ -351,5 +351,5 @@ footer { line-height: 22px; }
 .detail:not(.about) .desc, .detail:not(.about) .bn .desc { letter-spacing: -0.02em; word-break: keep-all; font-weight: 400; color: #272727; }
 .detail:not(.about) .bn.dark .desc { color: inherit; }
 .detail:not(.about) .desc .hl, .detail:not(.about) .desc .bd { font-weight: 600; }
-.detail:not(.about) .st { letter-spacing: -0.02em; word-break: keep-all; color: #272727; }
-@media (prefers-color-scheme: dark) { .detail:not(.about) .desc, .detail:not(.about) .st { color: var(--text); } }
+.detail:not(.about) .st { letter-spacing: -0.02em; word-break: keep-all; margin-bottom: 12px; }   /* 소제목은 검정(--text), 본문과의 간격 8→12px */
+@media (prefers-color-scheme: dark) { .detail:not(.about) .desc { color: var(--text); } }
