@@ -57,18 +57,23 @@ function heroInner() {
     : '<img src="' + u + '" alt="" onerror="this.remove()">';
 }
 /* 영상 자동재생: 아이폰·사파리는 소리 없음(muted)을 코드로 한 번 더 지정해야 확실히 재생된다. 절전 모드 등으로 막히면 첫 터치·스크롤 때 다시 재생한다. */
-let heroDone = false;   /* 영상을 한 번 봤으면 새로고침 전까지 다시 보여주지 않는다 */
-function heroEnd(hero) {   /* 영상이 끝나면 접히며 사라지고, 소개 글이 맨 위로 올라온다 */
-  heroDone = true;
-  const h = hero.offsetHeight;
-  if (window.scrollY > 10) { hero.remove(); window.scrollBy(0, -Math.min(h, window.scrollY)); return; }
-  hero.style.cssText += ";transition:height .6s ease;height:" + h + "px;aspect-ratio:auto";
-  requestAnimationFrame(() => requestAnimationFrame(() => { hero.style.height = "0px"; }));
-  setTimeout(() => hero.remove(), 700);
+let heroDone = false;   /* 영상 자리를 한 번 지나갔으면 새로고침 전까지 다시 보여주지 않는다 */
+/* 영상은 마지막 장면(이름 + 3열 틀)에서 멈춘다. 스크롤해서 소개 글이 영상을 완전히 덮으면 영상 자리를 없애고, 화면이 튀지 않게 스크롤 위치를 맞춘다. */
+function heroWatch() {
+  const hero = document.querySelector(".hero"); if (!hero) return;
+  const on = () => {
+    const h = document.querySelector(".hero"), nx = h && h.nextElementSibling;
+    if (!h) { window.removeEventListener("scroll", on); return; }
+    const hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hh")) || 64;
+    if (nx && nx.getBoundingClientRect().top <= hh + 1) {
+      const ht = h.offsetHeight; heroDone = true; h.remove();
+      window.scrollTo({ top: window.scrollY - ht, behavior: "instant" }); window.removeEventListener("scroll", on);
+    }
+  };
+  window.addEventListener("scroll", on, { passive: true });
 }
 function playHero() {
   const v = document.querySelector(".hero video"); if (!v) return;
-  v.addEventListener("ended", () => { const hero = v.closest(".hero"); if (hero) heroEnd(hero); });
   v.muted = true; v.defaultMuted = true; v.setAttribute("playsinline", "");
   const go = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
   go();
@@ -105,7 +110,7 @@ function home() {
   });
   h += "</div>";
   app.innerHTML = h;
-  playHero();
+  playHero(); heroWatch();
   app.querySelectorAll(".more").forEach(m => m.onclick = () => { m.closest("section").classList.add("open"); m.remove(); });
 }
 
