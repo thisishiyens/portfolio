@@ -126,7 +126,7 @@ header {
 .bar nav a { font-size: var(--fs-body-m); letter-spacing: .02em; }
 .bar nav a.on { font-weight: var(--fw-b); }   /* 지금 보고 있는 메뉴 */
 .btn { background: #111; color: #fff; font-size: var(--fs-body-m); font-weight: var(--fw); letter-spacing: .02em; padding: 8px 16px; border-radius: var(--r1); }   /* Contact 검정 버튼 (호버 효과 없음) */
-.logo { font-size: var(--fs-title); font-weight: var(--fw-b); letter-spacing: .14em; }
+.logo { font-size: var(--fs-title); font-weight: var(--fw-b); letter-spacing: -.01em; }
 
 /* ---------- 맨 위 소개 영역 (흰 배경 + 검은 글씨. 제목은 크게, 나머지 13~14px) ---------- */
 .intro { color: var(--text); background: var(--bg); padding: var(--s3) max(var(--pad), calc((100% - 1400px) / 2)); }

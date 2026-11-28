@@ -6,7 +6,7 @@
 const SITE = {
 
   /* 상단 로고와 하단에 나오는 이름 */
-  name: "Designer",
+  name: "D.Archive",
 
   /* 하단에 나오는 직함과 소개 한 줄 */
   role: "Visual Designer",
