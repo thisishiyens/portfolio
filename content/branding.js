@@ -50,7 +50,7 @@ const BRANDING = [
     banner: "branding-01/banner.jpg",
     bannerMobile: "branding-01/banner-m.jpg",
     tone:   "dark",
-    bannerDesc: "에듀테크 서비스 BlerOn의 브랜드를 0에서 설계했습니다.//로고부터 행사 부스까지 하나의 기준으로 이었고, 행사는 목표 대비 225%를 달성했습니다.",
+    bannerDesc: "에듀테크 서비스 BlerOn의 브랜드를 0에서 설계했습니다. 로고부터 행사 부스까지 일괄 진행하였고, 행사는 목표 대비 **225%**를 달성했습니다.",
     sections: [
       {
         images: ["branding-01/2.jpg"],
