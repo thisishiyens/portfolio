@@ -40,10 +40,12 @@ _backup/          예전 버전 (공개하지 않음)
   | Headline `--fs-headline` | 32px (모바일 `--fs-headline-m` 24px) | 소개 제목 |
   | Title `--fs-title` | 18px | 로고, 썸네일 제목, 상세 제목 |
   | Body Large `--fs-body-l` | 16px | **작업 상세 설명 본문**(행간 26px, 자간 -0.02em, 단어 단위 줄바꿈, Regular 400, 색 #272727, 강조 Semibold 600. 사용자 요청 2026-11-28). 소제목은 Title 18px Semibold, 검정(--text), 행간 28px, 본문과 간격 12px. 메인 소개 문단(`.intro p`)도 같은 모양 |
-  | Body Medium `--fs-body-m` | 14px | ROLE·SCOPE·OUTPUT 표(행간 22px), About·Career 글(행간 24px), 썸네일 서브 설명, Career 항목 제목(숨김), 메뉴, 바로가기, more |
+  | Body Medium `--fs-body-m` | 14px | ROLE·SCOPE·OUTPUT 표(행간 26px, 사용자 요청 2026-11-28 `--lh-fact`), About·Career 글(행간 24px), 메뉴·바로가기(22px), 썸네일 서브 설명, Career 항목 제목(숨김), 메뉴, 바로가기, more |
   | Body Small `--fs-body-s` | 12px | 연도(상세 제목 아래), 기여도, 알약 버튼, 이전/다음 |
   | Label `--fs-label` | 12px | 태그 |
   (사용자 요청 2026-11-27: 구글 Material 기준에 맞춰 본문 16 / 부수 14 / 작게 12 로 올렸다. 썸네일 서브·소개 문단은 14px 그대로 유지하려고 Body Medium 에 둠.)
+- **글씨 굵기(사용자 요청 2026-11-28)**: 기본 글씨는 영문·한글 모두 Regular(400), 굵게는 Semibold(600)만 쓴다(강조 `==` 도 600). 태그만 예외로 Medium(500).
+- **줄 높이·간격 예외값도 `:root` 토큰**(`--lh-fact --lh-st --st-gap --lh-card --lh-card-s --lh-pill --lh-logo`)이고, 어드민 "글자 크기" 페이지 아래쪽 표에서 바꾼다(편집기 `EXTRA` 목록. 토큰 이름을 바꾸면 편집기도 같이 고친다).
 - 글꼴: 영문 Poppins, 한글 Pretendard (둘 다 OFL). **OFL 이 아닌 글꼴(시스템 글꼴 포함)은 쓰지 않는다** — css 글꼴 목록에도 넣지 않는다. 사용자 요청으로 Open Sans 는 쓰지 않기로 했다. 본문 글자 크기는 **12~24px** 안에서만.
 - 섹션 3개: Branding / Product / Campaign. (파일·주소 이름도 product 로 통일했다. 예전 이름 uiux 는 더 이상 쓰지 않는다.) 메인 페이지 작업 목록은 웹 그리드 3열, 모바일(760px 이하) 1열이고 섹션별 작업이 4개 이상이고 3의 배수가 아니면 줄이 찬 만큼만 보이고 나머지는 밑줄 친 `more`(14px)를 눌러 펼친다(사용자 요청). 3의 배수이거나 3개 이하면 전부 보인다.
   상세 페이지(PC)는 왼쪽 이미지 60% / 오른쪽 내용 40%. 모바일은 위 내용 / 아래 이미지. 패딩 값은 모두 짝수로 쓴다.
