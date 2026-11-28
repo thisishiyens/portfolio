@@ -307,7 +307,8 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 .sub, .meta, .nav2 { line-height: var(--lh-body-s); }
 .logo { line-height: 28px; }                      /* 예외 */
 .intro h1 { line-height: var(--lh-headline); }
-.intro p { line-height: 26px; }                   /* 예외: 소개 문단 */
+.intro p { font-size: var(--fs-body-l); line-height: var(--lh-body-l); letter-spacing: -0.02em; word-break: keep-all; font-weight: 400; color: #272727; }   /* 메인 소개 문단: 상세 본문과 같은 모양 (사용자 요청 2026-11-28) */
+@media (prefers-color-scheme: dark) { .intro p { color: var(--text); } }
 .intro .steps span, .intro .steps i { line-height: 18px; }   /* 예외: 알약 버튼 */
 .card b { line-height: 22px; }                    /* 예외: 썸네일 제목은 촘촘하게 */
 .card .s { line-height: 18px; }                   /* 예외: 썸네일 서브 설명은 촘촘하게 */
