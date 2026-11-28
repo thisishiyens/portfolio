@@ -375,3 +375,6 @@ footer { line-height: 22px; }
 .hero { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 0; }
 .hero ~ .intro, .hero ~ #work { position: relative; z-index: 1; background: var(--bg); }   /* 영상 → 소개 글 → 바로가기 → 작업 목록 순서. 소개 글과 목록이 영상을 덮으며 올라온다 */
 .hero ~ .jump { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }   /* 영상 위를 지날 때 회색으로 비치지 않게 불투명 */
+
+/* 메인 영상은 화면(상단 메뉴 아래)을 꽉 채운다. 영상 아래 소개 글이 처음에는 보이지 않는다. 영상 비율이 다르면 가운데 기준으로 양옆을 잘라 채운다. */
+.hero { height: calc(100vh - var(--hh, 64px)); height: calc(100svh - var(--hh, 64px)); aspect-ratio: auto; }

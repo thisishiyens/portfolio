@@ -48,12 +48,23 @@ if (document.fonts) document.fonts.ready.then(setHH);
 
 /* ---------- 메인 큰 이미지 / 영상 ---------- */
 const mq = window.matchMedia("(max-width:760px)");
+/* 화면 비율(가로÷세로)에 가장 가까운 영상을 고른다. 기본 파일(hero.mp4)에 이름을 붙여 만든 파일이 images 에 있으면 그걸 쓰고, 없으면 기본 파일로 돌아간다.
+   PC: hero-16 / hero(1.9) / hero-22 / hero-25.mp4   모바일: hero-mobile-50 / -58 / hero-mobile(0.667) / -80.mp4  (숫자 = 가로÷세로 × 10) */
+const HERO_RATIOS = { pc: [[1.6, "-16"], [1.9, ""], [2.2, "-22"], [2.5, "-25"]], m: [[0.5, "-50"], [0.58, "-58"], [0.667, ""], [0.8, "-80"]] };
+function heroPick(f, isM) {
+  const hd = document.querySelector("header"), h = window.innerHeight - (hd ? hd.offsetHeight : 64);
+  if (h < 100 || !/\.mp4$/i.test(f)) return f;
+  const r = window.innerWidth / h;
+  let best = "", d = 9;
+  HERO_RATIOS[isM ? "m" : "pc"].forEach(([x, suf]) => { const e = Math.abs(Math.log(r / x)); if (e < d) { d = e; best = suf; } });
+  return f.replace(/(\.mp4)$/i, best + "$1");
+}
 function heroInner() {
-  const f = (mq.matches && S.heroMobile) ? S.heroMobile : S.hero;
+  const isM = mq.matches && S.heroMobile, f = isM ? S.heroMobile : S.hero;
   if (!f) return "MAIN IMAGE";
-  const u = esc(src(f));
+  const u = esc(src(heroPick(f, isM))), b = esc(src(f));
   return /\.(mp4|webm)$/i.test(f)
-    ? '<video src="' + u + '" autoplay muted playsinline preload="auto" onerror="this.remove()"></video>'
+    ? '<video src="' + u + '" data-b="' + b + '" autoplay muted playsinline preload="auto" onerror="var b=this.dataset.b;if(b&&this.getAttribute(\'src\')!==b){this.setAttribute(\'src\',b)}else{this.remove()}"></video>'
     : '<img src="' + u + '" alt="" onerror="this.remove()">';
 }
 /* 영상 자동재생: 아이폰·사파리는 소리 없음(muted)을 코드로 한 번 더 지정해야 확실히 재생된다. 절전 모드 등으로 막히면 첫 터치·스크롤 때 다시 재생한다. */
