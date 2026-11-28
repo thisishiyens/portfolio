@@ -35,8 +35,8 @@ document.title = LB.tab;
 document.getElementById("flabel").textContent = LB.contact;
 { const lg = document.getElementById("logo"), i = S.name.indexOf(".");
   if (i < 0) lg.textContent = S.name;
-  else { const d = document.createElement("span"); d.className = "dot"; d.textContent = ".";
-    lg.append(S.name.slice(0, i), d, S.name.slice(i + 1)); } }  /* 로고의 첫 점(.)만 홀로그램 색 */
+  else { const d = document.createElement("span"); d.className = "dot"; lg.setAttribute("aria-label", S.name);
+    lg.append(S.name.slice(0, i), d, S.name.slice(i + 1)); } }  /* 로고의 첫 점(.)을 움직이는 홀로그램 동그라미로 */
 document.getElementById("fname").textContent = S.name;
 document.getElementById("frole").innerHTML = esc(S.role) + "<br>" + esc(S.tagline);
 document.getElementById("fcopy").textContent = "© " + new Date().getFullYear() + " " + S.name;
