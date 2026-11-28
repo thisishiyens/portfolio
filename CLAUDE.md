@@ -39,7 +39,7 @@ _backup/          예전 버전 (공개하지 않음)
   |---|---|---|
   | Headline `--fs-headline` | 32px (모바일 `--fs-headline-m` 24px) | 소개 제목 |
   | Title `--fs-title` | 18px | 로고, 썸네일 제목, 상세 제목 |
-  | Body Large `--fs-body-l` | 16px | **작업 상세 설명 본문·소제목**(행간 28px) |
+  | Body Large `--fs-body-l` | 16px | **작업 상세 설명 본문**(행간 26px, 자간 -0.02em, 단어 단위 줄바꿈, Regular 400, 색 #272727, 강조 Semibold 600. 사용자 요청 2026-11-28). 소제목은 Title 18px Semibold(행간 28px) |
   | Body Medium `--fs-body-m` | 14px | ROLE·SCOPE·OUTPUT 표(행간 22px), About·Career 글(행간 24px), 썸네일 서브 설명, 소개 문단, Career 항목 제목(숨김), 메뉴, 바로가기, more |
   | Body Small `--fs-body-s` | 12px | 연도(상세 제목 아래), 기여도, 알약 버튼, 이전/다음 |
   | Label `--fs-label` | 12px | 태그 |

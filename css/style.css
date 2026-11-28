@@ -50,7 +50,7 @@
   --lh-headline: 40px;
   --lh-headline-m: 36px;
   --lh-title: 26px;
-  --lh-body-l: 28px;
+  --lh-body-l: 26px;
   --lh-body-m: 22px;
   --lh-body-s: 20px;
   --lh-label: 16px;
@@ -188,7 +188,7 @@ section.open .card.extra { display: block; }
 .arr.prev { left: 16px; }
 .arr.next { right: 16px; }
 .drow + .drow { margin-top: var(--s3); }
-.st { font-size: var(--fs-body-l); font-weight: 700; line-height: 1.5; margin: var(--s2) 0 8px; }   /* 소제목: 16px 굵게 (본문과 같은 크기) */
+.st { font-size: var(--fs-title); font-weight: 600; line-height: 1.5; margin: var(--s2) 0 8px; }   /* 소제목: 18px Semibold */
 .info > .st:first-child { margin-top: 0; }
 .info .desc + .desc { margin-top: var(--s1); }
 .detail.about { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }   /* About(PC): 글 60% 왼쪽 / 사진 40% 오른쪽 */
@@ -311,7 +311,7 @@ footer b { display: block; color: var(--text); font-weight: 600; letter-spacing:
 .intro .steps span, .intro .steps i { line-height: 18px; }   /* 예외: 알약 버튼 */
 .card b { line-height: 22px; }                    /* 예외: 썸네일 제목은 촘촘하게 */
 .card .s { line-height: 18px; }                   /* 예외: 썸네일 서브 설명은 촘촘하게 */
-.st { line-height: var(--lh-body-l); }
+.st { line-height: 28px; }                        /* 예외: 상세 소제목 18px 에 맞춘 행간 */
 .detail h1, .career h1 { line-height: var(--lh-title); }
 .fact { line-height: var(--lh-body-m); }
 .tags span { line-height: var(--lh-label); }
@@ -344,3 +344,12 @@ footer { line-height: 22px; }
   .bn.light { --text: #111; --muted: #8a8a8a; --line: rgba(0, 0, 0, .14); --ph: rgba(0, 0, 0, .06); --tag-text: #5c5c5c; --hl: #fff9d6; --hl-w: 500; }
   .bn .info { color: var(--text); }
 }
+
+/* ---------- 작업 상세 본문 글자 모양 (사용자 요청 2026-11-28) ----------
+   본문 16px / 행간 26px(≈1.65) / 자간 -0.02em / 단어 단위 줄바꿈 / Regular(400) / 색 #272727, 강조(== **)는 Semibold(600).
+   다크 모드와 어두운 배너(dark) 위에서는 흰 글씨 그대로. */
+.detail:not(.about) .desc, .detail:not(.about) .bn .desc { letter-spacing: -0.02em; word-break: keep-all; font-weight: 400; color: #272727; }
+.detail:not(.about) .bn.dark .desc { color: inherit; }
+.detail:not(.about) .desc .hl, .detail:not(.about) .desc .bd { font-weight: 600; }
+.detail:not(.about) .st { letter-spacing: -0.02em; word-break: keep-all; color: #272727; }
+@media (prefers-color-scheme: dark) { .detail:not(.about) .desc, .detail:not(.about) .st { color: var(--text); } }
