@@ -44,7 +44,7 @@ const SITE = {
      heroOn 을 false 로 바꾸면 영상이 잠시 꺼집니다(파일은 그대로).
      파일 이름을 비워두면("") 영역 자체가 나오지 않습니다.
      크기: PC 영상 1920 x 840 / 이미지 2400 x 1050, 모바일 영상 1080 x 1350 / 이미지 1200 x 1500 */
-  heroOn: true,            // true = 영상 보이기 / false = 숨기기
+  heroOn: true,            // true = 영상 보이기(한 번 재생 후 접힘) / false = 숨기기
   hero: "hero.mp4",        // PC 화면용
   heroMobile: "hero-mobile.mp4"   // 모바일용 (비워두면 위 파일을 그대로 씁니다)
 };

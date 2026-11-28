@@ -53,12 +53,22 @@ function heroInner() {
   if (!f) return "MAIN IMAGE";
   const u = esc(src(f));
   return /\.(mp4|webm)$/i.test(f)
-    ? '<video src="' + u + '" autoplay muted loop playsinline preload="auto" onerror="this.remove()"></video>'
+    ? '<video src="' + u + '" autoplay muted playsinline preload="auto" onerror="this.remove()"></video>'
     : '<img src="' + u + '" alt="" onerror="this.remove()">';
 }
 /* 영상 자동재생: 아이폰·사파리는 소리 없음(muted)을 코드로 한 번 더 지정해야 확실히 재생된다. 절전 모드 등으로 막히면 첫 터치·스크롤 때 다시 재생한다. */
+let heroDone = false;   /* 영상을 한 번 봤으면 새로고침 전까지 다시 보여주지 않는다 */
+function heroEnd(hero) {   /* 영상이 끝나면 접히며 사라지고, 소개 글이 맨 위로 올라온다 */
+  heroDone = true;
+  const h = hero.offsetHeight;
+  if (window.scrollY > 10) { hero.remove(); window.scrollBy(0, -Math.min(h, window.scrollY)); return; }
+  hero.style.cssText += ";transition:height .6s ease;height:" + h + "px;aspect-ratio:auto";
+  requestAnimationFrame(() => requestAnimationFrame(() => { hero.style.height = "0px"; }));
+  setTimeout(() => hero.remove(), 700);
+}
 function playHero() {
   const v = document.querySelector(".hero video"); if (!v) return;
+  v.addEventListener("ended", () => { const hero = v.closest(".hero"); if (hero) heroEnd(hero); });
   v.muted = true; v.defaultMuted = true; v.setAttribute("playsinline", "");
   const go = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
   go();
@@ -79,7 +89,7 @@ function introHTML() {
 /* ---------- 메인 페이지 ---------- */
 function home() {
   /* 메인 이미지·영상 파일을 content/site.js 에 적어야 나옵니다. 비어 있으면 아예 나오지 않습니다. */
-  let h = (S.heroOn !== false && (S.hero || S.heroMobile) ? '<div class="hero">' + heroInner() + "</div>" : "") + introHTML() +
+  let h = (S.heroOn !== false && !heroDone && (S.hero || S.heroMobile) ? '<div class="hero">' + heroInner() + "</div>" : "") + introHTML() +
     '<nav class="jump">' + SECTIONS.map(s => '<a href="#' + s.id + '" data-t="' + esc(s.name) + '">' + esc(s.name) + "</a>").join("") + "</nav>";   /* 메인 이미지 아래 섹션 바로가기 */
   h += '<div id="work">';
   SECTIONS.forEach(s => {
