@@ -355,10 +355,10 @@ footer { line-height: 22px; }
 }
 
 /* ---------- 작업 상세 본문 글자 모양 (사용자 요청 2026-11-28) ----------
-   본문 16px / 행간 26px(≈1.65) / 자간 -0.02em / 단어 단위 줄바꿈 / Regular(400) / 색 #272727, 강조(== **)는 Semibold(600).
+   본문 16px / 행간 26px(≈1.65) / 자간 -0.02em / 단어 단위 줄바꿈 / Regular(400) / 색 #3a3a3a, 강조(== **)는 Semibold(600).
    다크 모드와 어두운 배너(dark) 위에서는 흰 글씨 그대로. */
 .detail:not(.about) .desc, .detail:not(.about) .bn .desc { letter-spacing: -0.02em; word-break: keep-all; font-weight: 400; color: var(--desc); }
 .detail:not(.about) .bn.dark .desc { color: inherit; }
 .detail:not(.about) .desc .hl, .detail:not(.about) .desc .bd { font-weight: 600; }
 .detail:not(.about) .st { letter-spacing: -0.02em; word-break: keep-all; margin-bottom: var(--st-gap); }   /* 소제목은 검정(--text), 본문과의 간격 8→12px */
-@media (prefers-color-scheme: dark) { .bn.light { --desc: #272727; } }   /* 다크 모드에서도 밝은 배너 위 본문은 어둡게(밝은 화면의 --desc 와 같은 값으로 맞춰 둠) */
+@media (prefers-color-scheme: dark) { .bn.light { --desc: #3a3a3a; } }   /* 다크 모드에서도 밝은 배너 위 본문은 어둡게(밝은 화면의 --desc 와 같은 값으로 맞춰 둠) */
