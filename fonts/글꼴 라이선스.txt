@@ -7,3 +7,6 @@
 영문 알파벳: Poppins (Poppins-400/500/600.woff2, 알파벳 A-Z a-z 만 담은 파일. 숫자·기호는 Pretendard)
       SIL Open Font License 1.1 — 상업적 사용, 웹사이트 포함 가능
       https://fonts.google.com/specimen/Poppins
+
+Montserrat (메인 영상 안에서만 사용, 사이트에는 포함되지 않음)
+  The Montserrat Project Authors - SIL Open Font License 1.1

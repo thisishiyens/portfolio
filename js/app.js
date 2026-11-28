@@ -71,7 +71,7 @@ function introHTML() {
 /* ---------- 메인 페이지 ---------- */
 function home() {
   /* 메인 이미지·영상 파일을 content/site.js 에 적어야 나옵니다. 비어 있으면 아예 나오지 않습니다. */
-  let h = introHTML() + (S.hero || S.heroMobile ? '<div class="hero">' + heroInner() + "</div>" : "") +
+  let h = introHTML() + (S.heroOn !== false && (S.hero || S.heroMobile) ? '<div class="hero">' + heroInner() + "</div>" : "") +
     '<nav class="jump">' + SECTIONS.map(s => '<a href="#' + s.id + '" data-t="' + esc(s.name) + '">' + esc(s.name) + "</a>").join("") + "</nav>";   /* 메인 이미지 아래 섹션 바로가기 */
   h += '<div id="work">';
   SECTIONS.forEach(s => {
