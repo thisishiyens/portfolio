@@ -4,6 +4,6 @@
       SIL Open Font License 1.1 — 상업적 사용, 웹사이트 포함 가능
       https://github.com/orioncactus/pretendard
 
-영문: Poppins (구글 폰트에서 불러옴)
+영문 알파벳: Poppins (Poppins-400/500/600.woff2, 알파벳 A-Z a-z 만 담은 파일. 숫자·기호는 Pretendard)
       SIL Open Font License 1.1 — 상업적 사용, 웹사이트 포함 가능
       https://fonts.google.com/specimen/Poppins
