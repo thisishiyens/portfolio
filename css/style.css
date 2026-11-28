@@ -370,3 +370,8 @@ footer { line-height: 22px; }
 .detail:not(.about) .desc .hl, .detail:not(.about) .desc .bd { font-weight: var(--fw-b); }
 .detail:not(.about) .st { letter-spacing: var(--ls-body); word-break: keep-all; margin-bottom: var(--st-gap); }   /* 소제목은 검정(--text), 본문과의 간격 8→12px */
 @media (prefers-color-scheme: dark) { .bn.light { --desc: #3a3a3a; --hl: #e9edff; } }   /* 다크 모드에서도 밝은 배너 위 본문은 어둡게(밝은 화면의 --desc 와 같은 값으로 맞춰 둠) */
+
+/* ---------- 메인 영상: 스크롤하면 작업 목록이 영상을 덮으며 올라온다 (사용자 요청 2026-11-28) ---------- */
+.hero { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hh, 64px)); z-index: 0; }
+.hero ~ .intro, .hero ~ #work { position: relative; z-index: 1; background: var(--bg); }   /* 영상 → 소개 글 → 바로가기 → 작업 목록 순서. 소개 글과 목록이 영상을 덮으며 올라온다 */
+.hero ~ .jump { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }   /* 영상 위를 지날 때 회색으로 비치지 않게 불투명 */
