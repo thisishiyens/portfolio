@@ -59,6 +59,14 @@ function heroInner() {
 /* 영상 자동재생: 아이폰·사파리는 소리 없음(muted)을 코드로 한 번 더 지정해야 확실히 재생된다. 절전 모드 등으로 막히면 첫 터치·스크롤 때 다시 재생한다. */
 let heroDone = false;   /* 영상 자리를 한 번 지나갔으면 새로고침 전까지 다시 보여주지 않는다 */
 /* 영상은 마지막 장면(이름 + 3열 틀)에서 멈춘다. 스크롤해서 소개 글이 영상을 완전히 덮으면 영상 자리를 없애고, 화면이 튀지 않게 스크롤 위치를 맞춘다. */
+function heroEnd(hero) {   /* 영상이 끝나면(PC·모바일 모두) 영상 자리가 접히며 사라지고 소개 글이 바로 올라온다 */
+  if (heroDone) return; heroDone = true;
+  const h = hero.offsetHeight;
+  if (window.scrollY > 10) { hero.remove(); window.scrollTo({ top: Math.max(0, window.scrollY - h), behavior: "instant" }); return; }   /* 이미 스크롤했다면 화면이 튀지 않게 바로 제거 */
+  hero.style.cssText += ";transition:height .7s cubic-bezier(.3,.7,.2,1);height:" + h + "px;aspect-ratio:auto";
+  requestAnimationFrame(() => requestAnimationFrame(() => { hero.style.height = "0px"; }));
+  setTimeout(() => hero.remove(), 760);
+}
 function heroWatch() {
   const hero = document.querySelector(".hero"); if (!hero) return;
   const on = () => {
@@ -74,6 +82,7 @@ function heroWatch() {
 }
 function playHero() {
   const v = document.querySelector(".hero video"); if (!v) return;
+  v.addEventListener("ended", () => { const hero = v.closest(".hero"); if (hero) heroEnd(hero); });
   v.muted = true; v.defaultMuted = true; v.setAttribute("playsinline", "");
   const go = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
   go();
