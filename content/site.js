@@ -23,7 +23,7 @@ const SITE = {
     product: "Product",
     campaign: "Campaign",
     contact: "CONTACT",      // 맨 아래 연락처 제목
-    tab: "PORTFOLIO"         // 브라우저 탭 제목: 이름 · 이 글자
+    tab: "LEE YENA · Designer"         // 브라우저 탭 제목 (적은 그대로 나옵니다)
   },
 
   /* ---------- 맨 위 소개 영역 ----------
